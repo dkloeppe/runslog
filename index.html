@@ -202,18 +202,16 @@
       overflow-x:auto;padding-bottom:10px;
     }
   }
-/* Logo photos */
-  figure.logo-photo{
-    margin:26px auto 6px;text-align:center;
+/* Site logo */
+  .logo{margin:10px auto 2px;text-align:center;}
+  .logo-link{display:inline-block;line-height:0;}
+  .logo-link img{
+    display:block;width:200px;max-width:55%;height:auto;margin:0 auto;
   }
-  figure.logo-photo img{
-    display:block;width:100%;height:auto;margin:0 auto;
-    border-radius:12px;border:1px solid var(--hair-strong);
-    background:var(--panel);
-  }
-  figure.logo-photo.is-wide{max-width:24%;}
-  figure.logo-photo.is-wide img{object-fit:cover;object-position:center 35%;}
-  figure.logo-photo.is-portrait{max-width:320px;}
+  /* Footer logo */
+  footer{text-align:center;}
+  footer .footer-logo{display:inline-block;line-height:0;margin-bottom:12px;}
+  footer .footer-logo img{height:40px;width:auto;display:block;margin:0 auto;}
 </style>
 </head>
 
@@ -231,9 +229,9 @@
     <div class="range" id="dateRange">&mdash;</div>
   </div>
   <div class="logo">
-    <figure class="logo-photo is-wide">
+    <a class="logo-link" href="RunsLog-Logo.png" target="_blank" rel="noopener">
       <img src="RunsLog-Logo.png" alt="RunsLog Logo">
-    </figure>
+    </a>
   </div>
   <div class="hero">
     <p class="hero-label">Total distance covered</p>
@@ -336,7 +334,10 @@
     <div class="year-grid" id="yearlyGrid"></div>
   </section>
 
-  <footer>Built from runs log &middot; <span id="footerCount"></span> runs &middot; <span id="footerRange"></span></footer>
+  <footer>
+    <a class="footer-logo" href="index.html"><img src="RunsLog-Logo.png" alt="RunsLog logo"></a>
+    <div class="footer-text">Built from runs log &middot; <span id="footerCount"></span> runs &middot; <span id="footerRange"></span></div>
+  </footer>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>

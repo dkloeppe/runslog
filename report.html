@@ -143,7 +143,9 @@
 
   .closing-title{font-family:'Bebas Neue',sans-serif;font-size:40px;font-weight:400;margin:0 0 14px;}
 
-  footer{padding:40px 0 0;color:var(--slate);font-size:12px;font-family:'IBM Plex Mono',monospace;}
+  footer{padding:40px 0 0;color:var(--slate);font-size:12px;font-family:'IBM Plex Mono',monospace;text-align:center;}
+  footer .footer-logo{display:inline-block;line-height:0;margin-bottom:12px;}
+  footer .footer-logo img{height:40px;width:auto;display:block;margin:0 auto;}
 
   /* Report photos */
   figure.report-photo{
@@ -191,7 +193,7 @@
     <p class="section-eyebrow">The report</p>
     <h1 class="page-title">100 weeks, one story</h1>
     <p class="section-sub">I started running in the fall of 2024 with the goal of being able to run a 10k everyday. Now, 100 weeks later, I've run a 10k everyday for the last 166 days (and counting).</p>
-    <p class="intro-copy">I ran 2 marathons in 2025, and I'm planning on running 2 marathons in fall of 2026 (Idaho Running Day and City of Trees). Next year, I'm going to start running ultras. My first ultra is going to be the Wilson Creek Frozen 50K in January 2027 (It's gonna be cold!!).</p>
+    <p class="intro-copy">I ran 2 marathons in 2025: The Boise River Marathon and The City of Trees Marathon.  I've got a total of 5 races planned for 2026: a 5K, a 10K, a half marathon, and 2 full marathons (Idaho Running Day and City of Trees). In 2027, I'm going to start running ultras. My first ultra is going to be the Wilson Creek Frozen 50K in January 2027 (It's gonna be cold!!).</p>
   </section>
 
   <section>
@@ -200,7 +202,14 @@
     <p class="section-sub">Miles logged per training week, all 100 weeks.</p>
     <div class="chart-card">
       <div style="position:relative;width:100%;height:280px;">
-        <canvas id="weeklyMileageChart" role="img" aria-label="Line chart of weekly running mileage across 100 weeks"></canvas>
+        <canvas id="weeklyMileageChart" role="img" aria-label="Bar chart of weekly running mileage across 100 weeks"></canvas>
+      </div>
+    </div>
+    <h2 class="section-title" style="margin-top:36px;">Weekly hours</h2>
+    <p class="section-sub">Hours logged per training week, all 100 weeks.</p>
+    <div class="chart-card">
+      <div style="position:relative;width:100%;height:280px;">
+        <canvas id="weeklyHoursChart" role="img" aria-label="Bar chart of weekly running hours across 100 weeks"></canvas>
       </div>
     </div>
   </section>
@@ -360,29 +369,36 @@
   <section style="padding-top:56px;">
     <p class="section-eyebrow">Looking ahead</p>
     <h2 class="closing-title">What's next</h2>
-    <p class="section-sub">I've got four more races lined up for this year: Great Futures 10K, Fit One Half Marathon, Idaho Running Day Marathon, and City of Trees Marathon. Additionally, I'm running my first ultramarathon next year: the Wilson Creek Frozen 50K.</p>
+    <p class="section-sub">I've got four more races lined up for this year: Great Futures 10K (August), Fit One Half Marathon (September), Idaho Running Day Marathon (October), and City of Trees Marathon (October). Additionally, I'm running my first ultramarathon next year: the Wilson Creek Frozen 50K (January). I'm going to start an 8 week training block in November that will heavily include trail/hill workouts and high-mileage weeks. Until then, I plan on keeping my weekly mileage at 60 with more track/speed workouts to get me ready for the road marathons.</p>
   </section>
 
-  <footer>Running report &middot; 100 weeks &middot; Sep 15, 2024 &ndash; Aug 23, 2026 &middot; generated from the runs log</footer>
+  <footer>
+    <a class="footer-logo" href="index.html"><img src="RunsLog-Logo.png" alt="RunsLog logo"></a>
+    <div class="footer-text">Running report &middot; 100 weeks &middot; Sep 15, 2024 &ndash; Aug 23, 2026 &middot; generated from the runs log</div>
+  </footer>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <script>
 const WEEKLY = [{"week": 1, "miles": 6.27, "start": "Sep 15, 2024"}, {"week": 2, "miles": 19.27, "start": "Sep 16, 2024"}, {"week": 3, "miles": 17.1, "start": "Sep 24, 2024"}, {"week": 4, "miles": 22.37, "start": "Sep 30, 2024"}, {"week": 5, "miles": 48.59, "start": "Oct 7, 2024"}, {"week": 6, "miles": 44.06, "start": "Oct 14, 2024"}, {"week": 7, "miles": 51.01, "start": "Oct 21, 2024"}, {"week": 8, "miles": 63.77, "start": "Oct 28, 2024"}, {"week": 9, "miles": 43.66, "start": "Nov 4, 2024"}, {"week": 10, "miles": 44.16, "start": "Nov 11, 2024"}, {"week": 11, "miles": 46.05, "start": "Nov 18, 2024"}, {"week": 12, "miles": 37.21, "start": "Nov 25, 2024"}, {"week": 13, "miles": 0.0, "start": null}, {"week": 14, "miles": 0.0, "start": null}, {"week": 15, "miles": 6.25, "start": "Dec 19, 2024"}, {"week": 16, "miles": 45.07, "start": "Dec 27, 2024"}, {"week": 17, "miles": 57.79, "start": "Dec 30, 2024"}, {"week": 18, "miles": 12.93, "start": "Jan 21, 2025"}, {"week": 19, "miles": 18.99, "start": "Jan 29, 2025"}, {"week": 20, "miles": 18.69, "start": "Feb 4, 2025"}, {"week": 21, "miles": 13.02, "start": "Feb 11, 2025"}, {"week": 22, "miles": 31.5, "start": "Feb 17, 2025"}, {"week": 23, "miles": 25.21, "start": "Feb 24, 2025"}, {"week": 24, "miles": 44.09, "start": "Mar 3, 2025"}, {"week": 25, "miles": 37.45, "start": "Mar 10, 2025"}, {"week": 26, "miles": 50.78, "start": "Mar 18, 2025"}, {"week": 27, "miles": 12.99, "start": "Mar 27, 2025"}, {"week": 28, "miles": 31.35, "start": "Apr 3, 2025"}, {"week": 29, "miles": 25.87, "start": "Apr 9, 2025"}, {"week": 30, "miles": 50.47, "start": "Apr 14, 2025"}, {"week": 31, "miles": 30.96, "start": "Apr 23, 2025"}, {"week": 32, "miles": 41.07, "start": "Apr 28, 2025"}, {"week": 33, "miles": 44.2, "start": "May 5, 2025"}, {"week": 34, "miles": 45.44, "start": "May 12, 2025"}, {"week": 35, "miles": 45.92, "start": "May 19, 2025"}, {"week": 36, "miles": 50.26, "start": "May 26, 2025"}, {"week": 37, "miles": 57.45, "start": "Jun 2, 2025"}, {"week": 38, "miles": 44.01, "start": "Jun 9, 2025"}, {"week": 39, "miles": 44.02, "start": "Jun 16, 2025"}, {"week": 40, "miles": 38.03, "start": "Jun 23, 2025"}, {"week": 41, "miles": 19.07, "start": "Jul 2, 2025"}, {"week": 42, "miles": 31.54, "start": "Jul 7, 2025"}, {"week": 43, "miles": 37.8, "start": "Jul 14, 2025"}, {"week": 44, "miles": 25.09, "start": "Jul 22, 2025"}, {"week": 45, "miles": 26.68, "start": "Jul 28, 2025"}, {"week": 46, "miles": 46.44, "start": "Aug 4, 2025"}, {"week": 47, "miles": 46.37, "start": "Aug 11, 2025"}, {"week": 48, "miles": 58.74, "start": "Aug 18, 2025"}, {"week": 49, "miles": 43.72, "start": "Aug 25, 2025"}, {"week": 50, "miles": 56.11, "start": "Sep 1, 2025"}, {"week": 51, "miles": 46.87, "start": "Sep 8, 2025"}, {"week": 52, "miles": 48.74, "start": "Sep 15, 2025"}, {"week": 53, "miles": 55.19, "start": "Sep 22, 2025"}, {"week": 54, "miles": 48.3, "start": "Sep 29, 2025"}, {"week": 55, "miles": 65.29, "start": "Oct 6, 2025"}, {"week": 56, "miles": 55.33, "start": "Oct 13, 2025"}, {"week": 57, "miles": 51.11, "start": "Oct 20, 2025"}, {"week": 58, "miles": 40.17, "start": "Oct 27, 2025"}, {"week": 59, "miles": 64.92, "start": "Nov 3, 2025"}, {"week": 60, "miles": 74.32, "start": "Nov 10, 2025"}, {"week": 61, "miles": 45.78, "start": "Nov 17, 2025"}, {"week": 62, "miles": 27.08, "start": "Nov 25, 2025"}, {"week": 63, "miles": 34.67, "start": "Dec 1, 2025"}, {"week": 64, "miles": 41.7, "start": "Dec 8, 2025"}, {"week": 65, "miles": 24.37, "start": "Dec 15, 2025"}, {"week": 66, "miles": 38.18, "start": "Dec 24, 2025"}, {"week": 67, "miles": 52.75, "start": "Dec 29, 2025"}, {"week": 68, "miles": 67.19, "start": "Jan 5, 2026"}, {"week": 69, "miles": 50.07, "start": "Jan 12, 2026"}, {"week": 70, "miles": 28.54, "start": "Jan 19, 2026"}, {"week": 71, "miles": 42.44, "start": "Jan 26, 2026"}, {"week": 72, "miles": 22.25, "start": "Feb 3, 2026"}, {"week": 73, "miles": 49.62, "start": "Feb 9, 2026"}, {"week": 74, "miles": 50.99, "start": "Feb 16, 2026"}, {"week": 75, "miles": 49.92, "start": "Feb 23, 2026"}, {"week": 76, "miles": 35.69, "start": "Mar 2, 2026"}, {"week": 77, "miles": 48.14, "start": "Mar 9, 2026"}, {"week": 78, "miles": 53.02, "start": "Mar 16, 2026"}, {"week": 79, "miles": 48.75, "start": "Mar 23, 2026"}, {"week": 80, "miles": 52.92, "start": "Mar 30, 2026"}, {"week": 81, "miles": 55.01, "start": "Apr 6, 2026"}, {"week": 82, "miles": 54.29, "start": "Apr 13, 2026"}, {"week": 83, "miles": 53.29, "start": "Apr 20, 2026"}, {"week": 84, "miles": 52.31, "start": "Apr 27, 2026"}, {"week": 85, "miles": 62.06, "start": "May 4, 2026"}, {"week": 86, "miles": 72.41, "start": "May 11, 2026"}, {"week": 87, "miles": 82.09, "start": "May 18, 2026"}, {"week": 88, "miles": 92.28, "start": "May 25, 2026"}, {"week": 89, "miles": 100.0, "start": "Jun 1, 2026"}, {"week": 90, "miles": 79.69, "start": "Jun 8, 2026"}, {"week": 91, "miles": 60.55, "start": "Jun 15, 2026"}, {"week": 92, "miles": 70.08, "start": "Jun 22, 2026"}, {"week": 93, "miles": 80.16, "start": "Jun 29, 2026"}, {"week": 94, "miles": 91.74, "start": "Jul 6, 2026"}, {"week": 95, "miles": 99.97, "start": "Jul 13, 2026"}, {"week": 96, "miles": 90.04, "start": "Jul 20, 2026"}, {"week": 97, "miles": 60.1, "start": "Jul 27, 2026"}, {"week": 98, "miles": 59.99, "start": "Aug 3, 2026"}, {"week": 99, "miles": 60.18, "start": "Aug 10, 2026"}, {"week": 100, "miles": 60.29, "start": "Aug 17, 2026"}];
+const WEEKLY_HOURS = [1.07, 3.4, 2.7, 3.34, 7.47, 6.58, 7.2, 9.76, 6.43, 6.82, 7.23, 6.0, 0.0, 0.0, 0.97, 7.0, 8.83, 1.94, 2.73, 2.78, 1.96, 4.29, 3.34, 5.94, 5.33, 7.22, 1.83, 4.49, 3.64, 7.08, 4.53, 6.36, 5.82, 6.03, 5.89, 6.8, 8.14, 5.9, 5.84, 5.17, 2.69, 4.64, 5.69, 3.91, 4.0, 6.65, 7.16, 9.26, 6.33, 8.38, 6.74, 7.19, 7.97, 6.9, 9.23, 8.21, 7.42, 6.05, 10.12, 11.51, 6.97, 4.45, 5.03, 6.3, 3.71, 5.49, 7.83, 9.46, 7.23, 4.18, 6.28, 3.23, 6.86, 7.33, 6.81, 5.01, 6.71, 7.51, 6.95, 7.53, 8.09, 7.82, 7.6, 7.53, 9.6, 10.45, 12.01, 13.66, 16.09, 11.93, 8.93, 10.38, 12.01, 13.82, 15.48, 13.7, 8.69, 9.1, 10.31, 9.74];
 const trail = '#d99a45';
 const slate = '#8fa199';
+const moss = '#7fa06d';
 const hair = 'rgba(238,240,230,0.09)';
 const fmt = n => n.toLocaleString(undefined,{maximumFractionDigits:1});
 
 new Chart(document.getElementById('weeklyMileageChart'), {
-  type:'line',
+  type:'bar',
   data:{
     labels: WEEKLY.map(w=>'Wk '+w.week),
     datasets:[{
       label:'Miles',
       data: WEEKLY.map(w=>w.miles),
-      borderColor: trail, borderWidth:2, pointRadius:0,
-      fill:true, backgroundColor:'rgba(217,154,69,0.08)', tension:0.2
+      backgroundColor: WEEKLY.map(w => w.miles===0 ? 'rgba(193,97,58,0.35)' : trail),
+      borderRadius:3,
+      barPercentage:0.85,
+      categoryPercentage:0.9
     }]
   },
   options:{
@@ -393,6 +409,31 @@ new Chart(document.getElementById('weeklyMileageChart'), {
     scales:{
       x:{ ticks:{ display:false }, grid:{ display:false } },
       y:{ grid:{ color: hair }, ticks:{ color: slate, font:{size:11} }, title:{display:true,text:'Miles',color:slate,font:{size:11}} }
+    }
+  }
+});
+
+new Chart(document.getElementById('weeklyHoursChart'), {
+  type:'bar',
+  data:{
+    labels: WEEKLY.map(w=>'Wk '+w.week),
+    datasets:[{
+      label:'Hours',
+      data: WEEKLY_HOURS,
+      backgroundColor: WEEKLY_HOURS.map(h => h===0 ? 'rgba(193,97,58,0.35)' : moss),
+      borderRadius:3,
+      barPercentage:0.85,
+      categoryPercentage:0.9
+    }]
+  },
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    plugins:{ legend:{display:false},
+      tooltip:{ callbacks:{ title:(items)=> WEEKLY[items[0].dataIndex].start || ('Week '+WEEKLY[items[0].dataIndex].week), label:(item)=> fmt(item.raw)+' h' } }
+    },
+    scales:{
+      x:{ ticks:{ display:false }, grid:{ display:false } },
+      y:{ grid:{ color: hair }, ticks:{ color: slate, font:{size:11} }, title:{display:true,text:'Hours',color:slate,font:{size:11}} }
     }
   }
 });

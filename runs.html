@@ -99,7 +99,9 @@
   }
   .badge.race{border-color:var(--rust);color:var(--rust);}
   .badge.club{border-color:var(--trail);color:var(--trail);}
-  footer{padding:36px 0 0;color:var(--slate);font-size:12px;font-family:'IBM Plex Mono',monospace;}
+  footer{padding:36px 0 0;color:var(--slate);font-size:12px;font-family:'IBM Plex Mono',monospace;text-align:center;}
+  footer .footer-logo{display:inline-block;line-height:0;margin-bottom:12px;}
+  footer .footer-logo img{height:40px;width:auto;display:block;margin:0 auto;}
   .empty-state{padding:60px 20px;text-align:center;color:var(--slate);font-size:14px;}
 </style>
 </head>
@@ -136,11 +138,11 @@
             <th data-key="elev_sort">Elev gain</th>
             <th data-key="cal_sort">Calories</th>
             <th data-key="app">App</th>
-            <th data-key="shoe">Shoes</th>
             <th data-key="city">City</th>
             <th data-key="run_type">Type</th>
             <th data-key="terrain">Terrain</th>
             <th data-key="note">Note</th>
+            <th data-key="shoe">Shoes</th>
           </tr>
         </thead>
         <tbody id="runsBody"></tbody>
@@ -149,7 +151,10 @@
     <div class="empty-state" id="emptyState" style="display:none;">No runs match your search.</div>
   </div>
 
-  <footer>Built from runs log &middot; <span id="footerCount"></span> runs shown of <span id="footerTotal"></span></footer>
+  <footer>
+    <a class="footer-logo" href="index.html"><img src="RunsLog-Logo.png" alt="RunsLog logo"></a>
+    <div class="footer-text">Built from runs log &middot; <span id="footerCount"></span> runs shown of <span id="footerTotal"></span></div>
+  </footer>
 </div>
 
 <script>
@@ -229,11 +234,11 @@ function render(){
       + '<td class="mono">'+(r.elev_gain||'\u2013')+' ft</td>'
       + '<td class="mono">'+(r.calories||'\u2013')+'</td>'
       + '<td>'+(r.app||'')+'</td>'
-      + '<td>'+(r.shoe||'')+'</td>'
       + '<td>'+(r.city||'')+'</td>'
       + '<td><span class="'+badgeClass(r.run_type)+'">'+(r.run_type||'')+'</span></td>'
       + '<td>'+(r.terrain||'')+'</td>'
       + '<td>'+(r.note||'')+'</td>'
+      + '<td>'+(r.shoe||'')+'</td>'
       + '</tr>'
     ).join('');
   }
