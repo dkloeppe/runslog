@@ -397,11 +397,11 @@ document.getElementById('heroSub').textContent = DATA.summary.total_runs + ' run
 
 const chips = [
   {v: DATA.summary.total_runs, l:'Total runs'},
-  {v: DATA.summary.streak_days + ' days', l:'Current 10k streak'},
   {v: (()=>{const p=DATA.summary.weighted_pace; const m=Math.floor(p); const s=Math.round((p-m)*60); return m+':'+String(s).padStart(2,'0');})(), l:'Avg pace /mi'},
   {v: fmt(DATA.summary.total_hours,0)+'h', l:'Time on feet'},
   {v: fmt(DATA.summary.longest_run,1), l:'Longest run (mi)'},
-  {v: fmt(DATA.summary.best_week,0), l:'Best week (mi)'}
+  {v: fmt(DATA.summary.best_week,0), l:'Best week (mi)'},
+  {v: DATA.summary.streak_days + ' days', l:'Current 10k streak'}
 ];
 document.getElementById('chipRow').innerHTML = chips.map(c => '<div class="chip"><div class="v">'+c.v+'</div><div class="l">'+c.l+'</div></div>').join('');
 document.getElementById('footerCount').textContent = DATA.summary.total_runs;
