@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RunsLog &mdash; Training Plan</title>
+<link rel="icon" type="image/png" sizes="16x16" href="runslog-favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="runslog-favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="runslog-favicon-48x48.png">
+<link rel="icon" type="image/png" sizes="64x64" href="runslog-favicon-64x64.png">
+<link rel="icon" type="image/png" sizes="128x128" href="runslog-favicon-128x128.png">
+<link rel="icon" type="image/png" sizes="256x256" href="runslog-favicon-256x256.png">
+<link rel="apple-touch-icon" href="runslog-favicon-256x256.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#111b1a;
+    --panel:#182524;
+    --panel-2:#1e2e2c;
+    --paper:#eef0e6;
+    --paper-dim:#c7cdc0;
+    --trail:#d99a45;
+    --trail-dim:#8a672f;
+    --moss:#7fa06d;
+    --rust:#c1613a;
+    --slate:#8fa199;
+    --hair:rgba(238,240,230,0.09);
+    --hair-strong:rgba(238,240,230,0.16);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--ink);
+    color:var(--paper);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:820px;margin:0 auto;padding:0 28px 100px;}
+  .nav{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:26px 28px;max-width:820px;margin:0 auto;border-bottom:1px solid var(--hair);
+  }
+  .nav .mark{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.14em;color:var(--slate);display:flex;align-items:center;gap:9px;}
+  .nav .mark img{height:22px;width:22px;border-radius:5px;display:block;}
+  .back-btn{
+    display:inline-flex;align-items:center;gap:8px;
+    background:transparent;border:1px solid var(--hair-strong);color:var(--paper-dim);
+    font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.04em;
+    padding:9px 16px;border-radius:8px;text-decoration:none;transition:border-color .15s,color .15s;
+  }
+  .back-btn:hover{border-color:var(--trail);color:var(--paper);}
+
+  .hero{padding:56px 28px 40px;max-width:820px;margin:0 auto;text-align:center;}
+  .hero-label{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:var(--trail);margin:0 0 10px;}
+  .hero-number{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:clamp(90px,18vw,180px);
+    line-height:0.85;
+    margin:0;
+    color:var(--paper);
+    letter-spacing:0.01em;
+  }
+  .hero-number span{color:var(--trail);}
+  .hero-weeks-label{font-family:'Bebas Neue',sans-serif;font-size:clamp(24px,4vw,34px);letter-spacing:0.08em;color:var(--paper-dim);margin:-8px 0 18px;}
+  .hero-sub{font-size:16px;color:var(--paper-dim);margin:0 auto 30px;max-width:520px;}
+
+  .stat-band{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+    background:var(--hair);border:1px solid var(--hair);border-radius:12px;overflow:hidden;
+    margin:0 0 8px;
+  }
+  @media(max-width:600px){.stat-band{grid-template-columns:repeat(2,1fr);}}
+  .stat-cell{background:var(--panel);padding:20px 16px;text-align:center;}
+  .stat-cell .v{font-family:'IBM Plex Mono',monospace;font-size:22px;color:var(--trail);font-weight:500;}
+  .stat-cell .l{font-size:11px;color:var(--slate);margin-top:4px;text-transform:uppercase;letter-spacing:0.05em;}
+
+  section{padding:56px 0;border-bottom:1px solid var(--hair);}
+  section:last-of-type{border-bottom:none;}
+  .section-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:var(--trail);margin:0 0 8px;}
+  h1.page-title{font-family:'Bebas Neue',sans-serif;font-size:40px;font-weight:400;margin:0 0 6px;letter-spacing:0.01em;}
+  h2.section-title{font-family:'Bebas Neue',sans-serif;font-size:34px;font-weight:400;margin:0 0 6px;letter-spacing:0.01em;}
+  .section-sub{color:var(--paper-dim);font-size:15px;margin:0 0 26px;max-width:600px;}
+  .intro-copy{font-size:16px;color:var(--paper-dim);max-width:600px;}
+
+  /* Phases (chapters) */
+  .phase{padding:44px 0;border-bottom:1px solid var(--hair);}
+  .phase:last-child{border-bottom:none;}
+  .phase-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--slate);margin:0 0 8px;}
+  .phase-title{font-family:'Bebas Neue',sans-serif;font-size:34px;font-weight:400;margin:0 0 16px;letter-spacing:0.01em;color:var(--paper);}
+  .phase-stats{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:20px;}
+  .chip{
+    background:var(--panel);border:1px solid var(--hair);border-radius:8px;
+    padding:8px 14px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--paper-dim);
+  }
+  .chip b{color:var(--paper);font-weight:500;}
+  .phase-note{color:var(--paper-dim);font-size:15px;max-width:640px;margin:0 0 22px;}
+
+  /* Week calendar rows */
+  .week-cal-list{display:flex;flex-direction:column;gap:14px;}
+  .week-cal{
+    display:grid;grid-template-columns:148px repeat(7,1fr);gap:10px;align-items:stretch;
+  }
+  .week-summary{
+    background:var(--panel-2);border:1px solid var(--hair-strong);border-radius:10px;
+    padding:14px 16px;display:flex;flex-direction:column;justify-content:center;gap:2px;
+  }
+  .week-summary .wk-num{
+    font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--slate);
+    text-transform:uppercase;letter-spacing:0.06em;
+  }
+  .week-summary .wk-range{font-size:12px;color:var(--paper-dim);margin-top:2px;line-height:1.35;}
+  .week-summary .wk-total{
+    font-family:'Bebas Neue',sans-serif;font-size:30px;color:var(--trail);line-height:1;margin-top:8px;
+  }
+  .week-summary .wk-total small{
+    font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--slate);font-weight:400;margin-left:4px;
+  }
+  .day-cell{
+    background:var(--panel);border:1px solid var(--hair);border-radius:10px;
+    padding:11px 11px 13px;display:flex;flex-direction:column;min-width:0;
+  }
+  .day-cell.is-race{border-color:var(--trail-dim);background:var(--panel-2);}
+  .day-cell .dc-dow{
+    font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--paper);
+    text-transform:uppercase;letter-spacing:0.05em;
+  }
+  .day-cell .dc-date{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--slate);margin:2px 0 9px;}
+  .day-run{padding-top:8px;margin-top:8px;border-top:1px solid var(--hair);}
+  .day-run:first-of-type{padding-top:0;margin-top:0;border-top:none;}
+  .day-run .dr-miles{font-family:'IBM Plex Mono',monospace;font-size:15px;color:var(--trail);}
+  .day-run .dr-note{font-size:11px;color:var(--paper);margin:2px 0 0;font-weight:500;line-height:1.3;}
+  .day-run .dr-meta{font-size:10px;color:var(--slate);margin-top:2px;line-height:1.35;}
+  .day-cell.is-rest{align-items:center;justify-content:center;text-align:center;}
+  .day-cell.is-rest .dc-rest{font-size:11px;color:var(--slate);opacity:0.7;}
+  @media(max-width:900px){
+    .week-cal{
+      display:flex;gap:10px;overflow-x:auto;padding-bottom:10px;
+      -webkit-overflow-scrolling:touch;
+    }
+    .week-summary{min-width:140px;flex:0 0 auto;}
+    .day-cell{min-width:132px;flex:0 0 auto;}
+  }
+
+  .callout{
+    display:flex;gap:16px;align-items:flex-start;
+    background:var(--panel-2);border-left:3px solid var(--trail);border-radius:0 10px 10px 0;
+    padding:16px 20px;margin-top:24px;font-size:14px;color:var(--paper-dim);
+  }
+  .callout b{color:var(--paper);font-weight:500;}
+
+  footer{padding:40px 0 0;color:var(--slate);font-size:12px;font-family:'IBM Plex Mono',monospace;text-align:center;}
+  footer .footer-logo{display:inline-block;line-height:0;margin-bottom:12px;}
+  footer .footer-logo img{height:40px;width:auto;display:block;margin:0 auto;}
+</style>
+</head>
+<body>
+
+<div class="nav">
+  <div class="mark"><img src="runslog-favicon-64x64.png" alt="RunsLog logo">RunsLog</div>
+  <a class="back-btn" href="index.html">&larr; Back to dashboard</a>
+</div>
+
+<div class="hero">
+  <p class="hero-label">The plan</p>
+  <p class="hero-number" id="heroWeeks">0<span>.</span></p>
+  <p class="hero-weeks-label">WEEKS OF TRAINING</p>
+  <p class="hero-sub" id="heroSub">Loading&hellip;</p>
+  <div class="stat-band" id="statBand"></div>
+</div>
+
+<div class="wrap">
+
+  <section>
+    <p class="section-eyebrow">The plan</p>
+    <h1 class="page-title">Base miles to a frozen finish line</h1>
+    <p class="section-sub" id="introSub">Loading&hellip;</p>
+    <p class="intro-copy">For the next couple months I'm holding weekly mileage around 60 and getting to the track at least once a week to sharpen up for the road races this fall. Once the marathons are done in October, I'm shifting gears: mileage climbs by 10 miles a week through November, then holds at 100 miles a week through December. There will be a lot more trail running and elevation gain in that stretch to get my legs ready for my first ultra &mdash; the Wilson Creek Frozen 50K in January.</p>
+  </section>
+
+  <section style="border-bottom:none;padding-bottom:0;">
+    <p class="section-eyebrow">Week by week</p>
+    <h2 class="section-title">The build, phase by phase</h2>
+    <p class="section-sub">Every planned week from now through race day, Monday&ndash;Sunday, grouped by training phase.</p>
+    <div id="phaseList"></div>
+  </section>
+
+  <footer>
+    <a class="footer-logo" href="index.html"><img src="RunsLog-Logo.png" alt="RunsLog logo"></a>
+    <div class="footer-text" id="footerText">Training plan &middot; generated from the runs log</div>
+  </footer>
+</div>
+
+<script>
+const WEEKS = [{"week": 101, "label": "Aug 24\u201330, 2026", "start": "2026-08-24", "end": "2026-08-30", "miles": 60.25, "days": [{"date": "2026-08-24", "dow": "Mon", "dnum": 24, "month": "Aug", "total": 11.0, "runs": [{"miles": 11.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-08-25", "dow": "Tue", "dnum": 25, "month": "Aug", "total": 10.0, "runs": [{"miles": 10.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-08-26", "dow": "Wed", "dnum": 26, "month": "Aug", "total": 10.0, "runs": [{"miles": 4.0, "type": "Run Club", "city": "Boise", "location": "Boise High School Track", "terrain": "Outdoor Track", "note": "Tree City Track Club"}, {"miles": 6.0, "type": "Run Club", "city": "Nampa", "location": "Kingfisher Trail", "terrain": "Gravel Road", "note": "Boise Area Runners"}]}, {"date": "2026-08-27", "dow": "Thu", "dnum": 27, "month": "Aug", "total": 7.0, "runs": [{"miles": 7.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-08-28", "dow": "Fri", "dnum": 28, "month": "Aug", "total": 7.0, "runs": [{"miles": 7.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-08-29", "dow": "Sat", "dnum": 29, "month": "Aug", "total": 6.25, "runs": [{"miles": 6.25, "type": "Race", "city": "Nampa", "location": "Centennial Elementary School", "terrain": "Asphalt", "note": "Great Futures 10K"}]}, {"date": "2026-08-30", "dow": "Sun", "dnum": 30, "month": "Aug", "total": 9.0, "runs": [{"miles": 9.0, "type": "Run Club", "city": "Boise", "location": "Camel's Back Trail", "terrain": "Dirt Hills", "note": "Boise Area Runners"}]}]}, {"week": 102, "label": "Aug 31 \u2013 Sep 6, 2026", "start": "2026-08-31", "end": "2026-09-06", "miles": 60.0, "days": [{"date": "2026-08-31", "dow": "Mon", "dnum": 31, "month": "Aug", "total": 8.0, "runs": [{"miles": 8.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-09-01", "dow": "Tue", "dnum": 1, "month": "Sep", "total": 7.0, "runs": [{"miles": 7.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-09-02", "dow": "Wed", "dnum": 2, "month": "Sep", "total": 10.0, "runs": [{"miles": 4.0, "type": "Run Club", "city": "Boise", "location": "Boise High School Track", "terrain": "Outdoor Track", "note": "Tree City Track Club"}, {"miles": 6.0, "type": "Run Club", "city": "Nampa", "location": "Kingfisher Trail", "terrain": "Gravel Road", "note": "Boise Area Runners"}]}, {"date": "2026-09-03", "dow": "Thu", "dnum": 3, "month": "Sep", "total": 8.0, "runs": [{"miles": 8.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-09-04", "dow": "Fri", "dnum": 4, "month": "Sep", "total": 9.0, "runs": [{"miles": 9.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-09-05", "dow": "Sat", "dnum": 5, "month": "Sep", "total": 9.0, "runs": [{"miles": 9.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-09-06", "dow": "Sun", "dnum": 6, "month": "Sep", "total": 9.0, "runs": [{"miles": 9.0, "type": "Run Club", "city": "Boise", "location": "Camel's Back Trail", "terrain": "Dirt Hills", "note": "Boise Area Runners"}]}]}, {"week": 103, "label": "Sep 7\u201313, 2026", "start": "2026-09-07", "end": "2026-09-13", "miles": 60.0, "days": [{"date": "2026-09-07", "dow": "Mon", "dnum": 7, "month": "Sep", "total": 10.0, "runs": [{"miles": 10.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-09-08", "dow": "Tue", "dnum": 8, "month": "Sep", "total": 7.0, "runs": [{"miles": 7.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-09-09", "dow": "Wed", "dnum": 9, "month": "Sep", "total": 10.0, "runs": [{"miles": 4.0, "type": "Run Club", "city": "Boise", "location": "Boise High School Track", "terrain": "Outdoor Track", "note": "Tree City Track Club"}, {"miles": 6.0, "type": "Run Club", "city": "Nampa", "location": "Kingfisher Trail", "terrain": "Gravel Road", "note": "Boise Area Runners"}]}, {"date": "2026-09-10", "dow": "Thu", "dnum": 10, "month": "Sep", "total": 8.0, "runs": [{"miles": 8.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-09-11", "dow": "Fri", "dnum": 11, "month": "Sep", "total": 8.0, "runs": [{"miles": 8.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-09-12", "dow": "Sat", "dnum": 12, "month": "Sep", "total": 8.0, "runs": [{"miles": 8.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-09-13", "dow": "Sun", "dnum": 13, "month": "Sep", "total": 9.0, "runs": [{"miles": 9.0, "type": "Run Club", "city": "Boise", "location": "Camel's Back Trail", "terrain": "Dirt Hills", "note": "Boise Area Runners"}]}]}, {"week": 104, "label": "Sep 14\u201320, 2026", "start": "2026-09-14", "end": "2026-09-20", "miles": 60.0, "days": [{"date": "2026-09-14", "dow": "Mon", "dnum": 14, "month": "Sep", "total": 8.0, "runs": [{"miles": 8.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-09-15", "dow": "Tue", "dnum": 15, "month": "Sep", "total": 8.0, "runs": [{"miles": 8.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-09-16", "dow": "Wed", "dnum": 16, "month": "Sep", "total": 10.0, "runs": [{"miles": 4.0, "type": "Run Club", "city": "Boise", "location": "Boise High School Track", "terrain": "Outdoor Track", "note": "Tree City Track Club"}, {"miles": 6.0, "type": "Run Club", "city": "Nampa", "location": "Kingfisher Trail", "terrain": "Gravel Road", "note": "Boise Area Runners"}]}, {"date": "2026-09-17", "dow": "Thu", "dnum": 17, "month": "Sep", "total": 7.0, "runs": [{"miles": 7.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-09-18", "dow": "Fri", "dnum": 18, "month": "Sep", "total": 8.0, "runs": [{"miles": 8.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-09-19", "dow": "Sat", "dnum": 19, "month": "Sep", "total": 10.0, "runs": [{"miles": 10.0, "type": "Run Club", "city": "Boise", "location": "Trail", "terrain": "Dirt Hills", "note": "Boise Long Run Club"}]}, {"date": "2026-09-20", "dow": "Sun", "dnum": 20, "month": "Sep", "total": 9.0, "runs": [{"miles": 9.0, "type": "Run Club", "city": "Boise", "location": "Camel's Back Trail", "terrain": "Dirt Hills", "note": "Boise Area Runners"}]}]}, {"week": 105, "label": "Sep 21\u201327, 2026", "start": "2026-09-21", "end": "2026-09-27", "miles": 60.13, "days": [{"date": "2026-09-21", "dow": "Mon", "dnum": 21, "month": "Sep", "total": 7.0, "runs": [{"miles": 7.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-09-22", "dow": "Tue", "dnum": 22, "month": "Sep", "total": 7.0, "runs": [{"miles": 7.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-09-23", "dow": "Wed", "dnum": 23, "month": "Sep", "total": 10.0, "runs": [{"miles": 4.0, "type": "Run Club", "city": "Boise", "location": "Boise High School Track", "terrain": "Outdoor Track", "note": "Tree City Track Club"}, {"miles": 6.0, "type": "Run Club", "city": "Nampa", "location": "Kingfisher Trail", "terrain": "Gravel Road", "note": "Boise Area Runners"}]}, {"date": "2026-09-24", "dow": "Thu", "dnum": 24, "month": "Sep", "total": 7.0, "runs": [{"miles": 7.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-09-25", "dow": "Fri", "dnum": 25, "month": "Sep", "total": 7.0, "runs": [{"miles": 7.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-09-26", "dow": "Sat", "dnum": 26, "month": "Sep", "total": 13.13, "runs": [{"miles": 13.13, "type": "Race", "city": "Boise", "location": "Greenbelt - Ann Morrison Park", "terrain": "Asphalt", "note": "Fit One Half Marathon"}]}, {"date": "2026-09-27", "dow": "Sun", "dnum": 27, "month": "Sep", "total": 9.0, "runs": [{"miles": 9.0, "type": "Run Club", "city": "Boise", "location": "Camel's Back Trail", "terrain": "Dirt Hills", "note": "Boise Area Runners"}]}]}, {"week": 106, "label": "Sep 28 \u2013 Oct 4, 2026", "start": "2026-09-28", "end": "2026-10-04", "miles": 60.0, "days": [{"date": "2026-09-28", "dow": "Mon", "dnum": 28, "month": "Sep", "total": 8.0, "runs": [{"miles": 8.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-09-29", "dow": "Tue", "dnum": 29, "month": "Sep", "total": 7.0, "runs": [{"miles": 7.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-09-30", "dow": "Wed", "dnum": 30, "month": "Sep", "total": 10.0, "runs": [{"miles": 4.0, "type": "Run Club", "city": "Boise", "location": "Boise High School Track", "terrain": "Outdoor Track", "note": "Tree City Track Club"}, {"miles": 6.0, "type": "Run Club", "city": "Nampa", "location": "Kingfisher Trail", "terrain": "Gravel Road", "note": "Boise Area Runners"}]}, {"date": "2026-10-01", "dow": "Thu", "dnum": 1, "month": "Oct", "total": 8.0, "runs": [{"miles": 8.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-10-02", "dow": "Fri", "dnum": 2, "month": "Oct", "total": 9.0, "runs": [{"miles": 9.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-10-03", "dow": "Sat", "dnum": 3, "month": "Oct", "total": 9.0, "runs": [{"miles": 9.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-10-04", "dow": "Sun", "dnum": 4, "month": "Oct", "total": 9.0, "runs": [{"miles": 9.0, "type": "Run Club", "city": "Boise", "location": "Camel's Back Trail", "terrain": "Dirt Hills", "note": "Boise Area Runners"}]}]}, {"week": 107, "label": "Oct 5\u201311, 2026", "start": "2026-10-05", "end": "2026-10-11", "miles": 68.25, "days": [{"date": "2026-10-05", "dow": "Mon", "dnum": 5, "month": "Oct", "total": 6.25, "runs": [{"miles": 6.25, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-10-06", "dow": "Tue", "dnum": 6, "month": "Oct", "total": 6.25, "runs": [{"miles": 6.25, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-10-07", "dow": "Wed", "dnum": 7, "month": "Oct", "total": 10.0, "runs": [{"miles": 4.0, "type": "Run Club", "city": "Boise", "location": "Boise High School Track", "terrain": "Outdoor Track", "note": "Tree City Track Club"}, {"miles": 6.0, "type": "Run Club", "city": "Nampa", "location": "Kingfisher Trail", "terrain": "Gravel Road", "note": "Boise Area Runners"}]}, {"date": "2026-10-08", "dow": "Thu", "dnum": 8, "month": "Oct", "total": 7.0, "runs": [{"miles": 7.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-10-09", "dow": "Fri", "dnum": 9, "month": "Oct", "total": 6.25, "runs": [{"miles": 6.25, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-10-10", "dow": "Sat", "dnum": 10, "month": "Oct", "total": 6.25, "runs": [{"miles": 6.25, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-10-11", "dow": "Sun", "dnum": 11, "month": "Oct", "total": 26.25, "runs": [{"miles": 26.25, "type": "Race", "city": "Boise", "location": "Greenbelt - Payette Brewing", "terrain": "Asphalt", "note": "City of Trees Marathon"}]}]}, {"week": 108, "label": "Oct 12\u201318, 2026", "start": "2026-10-12", "end": "2026-10-18", "miles": 63.75, "days": [{"date": "2026-10-12", "dow": "Mon", "dnum": 12, "month": "Oct", "total": 6.25, "runs": [{"miles": 6.25, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-10-13", "dow": "Tue", "dnum": 13, "month": "Oct", "total": 6.25, "runs": [{"miles": 6.25, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-10-14", "dow": "Wed", "dnum": 14, "month": "Oct", "total": 6.25, "runs": [{"miles": 6.25, "type": "Run Club", "city": "Nampa", "location": "Kingfisher Trail", "terrain": "Gravel Road", "note": "Boise Area Runners"}]}, {"date": "2026-10-15", "dow": "Thu", "dnum": 15, "month": "Oct", "total": 6.25, "runs": [{"miles": 6.25, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-10-16", "dow": "Fri", "dnum": 16, "month": "Oct", "total": 6.25, "runs": [{"miles": 6.25, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-10-17", "dow": "Sat", "dnum": 17, "month": "Oct", "total": 26.25, "runs": [{"miles": 26.25, "type": "Race", "city": "Boise", "location": "Greenbelt - Lucky Peak State Park", "terrain": "Asphalt", "note": "Idaho Running Day Marathon"}]}, {"date": "2026-10-18", "dow": "Sun", "dnum": 18, "month": "Oct", "total": 6.25, "runs": [{"miles": 6.25, "type": "Run Club", "city": "Boise", "location": "Camel's Back Trail", "terrain": "Dirt Hills", "note": "Boise Area Runners"}]}]}, {"week": 109, "label": "Oct 19\u201325, 2026", "start": "2026-10-19", "end": "2026-10-25", "miles": 60.0, "days": [{"date": "2026-10-19", "dow": "Mon", "dnum": 19, "month": "Oct", "total": 7.0, "runs": [{"miles": 7.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-10-20", "dow": "Tue", "dnum": 20, "month": "Oct", "total": 7.0, "runs": [{"miles": 7.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-10-21", "dow": "Wed", "dnum": 21, "month": "Oct", "total": 10.0, "runs": [{"miles": 4.0, "type": "Run Club", "city": "Boise", "location": "Boise High School Track", "terrain": "Outdoor Track", "note": "Tree City Track Club"}, {"miles": 6.0, "type": "Run Club", "city": "Nampa", "location": "Kingfisher Trail", "terrain": "Gravel Road", "note": "Boise Area Runners"}]}, {"date": "2026-10-22", "dow": "Thu", "dnum": 22, "month": "Oct", "total": 8.0, "runs": [{"miles": 8.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-10-23", "dow": "Fri", "dnum": 23, "month": "Oct", "total": 9.0, "runs": [{"miles": 9.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-10-24", "dow": "Sat", "dnum": 24, "month": "Oct", "total": 10.0, "runs": [{"miles": 10.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-10-25", "dow": "Sun", "dnum": 25, "month": "Oct", "total": 9.0, "runs": [{"miles": 9.0, "type": "Run Club", "city": "Boise", "location": "Camel's Back Trail", "terrain": "Dirt Hills", "note": "Boise Area Runners"}]}]}, {"week": 110, "label": "Oct 26 \u2013 Nov 1, 2026", "start": "2026-10-26", "end": "2026-11-01", "miles": 60.0, "days": [{"date": "2026-10-26", "dow": "Mon", "dnum": 26, "month": "Oct", "total": 10.0, "runs": [{"miles": 10.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-10-27", "dow": "Tue", "dnum": 27, "month": "Oct", "total": 7.0, "runs": [{"miles": 7.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-10-28", "dow": "Wed", "dnum": 28, "month": "Oct", "total": 10.0, "runs": [{"miles": 4.0, "type": "Run Club", "city": "Boise", "location": "Boise High School Track", "terrain": "Outdoor Track", "note": "Tree City Track Club"}, {"miles": 6.0, "type": "Run Club", "city": "Nampa", "location": "Kingfisher Trail", "terrain": "Gravel Road", "note": "Boise Area Runners"}]}, {"date": "2026-10-29", "dow": "Thu", "dnum": 29, "month": "Oct", "total": 8.0, "runs": [{"miles": 8.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-10-30", "dow": "Fri", "dnum": 30, "month": "Oct", "total": 8.0, "runs": [{"miles": 8.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-10-31", "dow": "Sat", "dnum": 31, "month": "Oct", "total": 8.0, "runs": [{"miles": 8.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-11-01", "dow": "Sun", "dnum": 1, "month": "Nov", "total": 9.0, "runs": [{"miles": 9.0, "type": "Run Club", "city": "Boise", "location": "Camel's Back Trail", "terrain": "Dirt Hills", "note": "Boise Area Runners"}]}]}, {"week": 111, "label": "Nov 2\u20138, 2026", "start": "2026-11-02", "end": "2026-11-08", "miles": 70.0, "days": [{"date": "2026-11-02", "dow": "Mon", "dnum": 2, "month": "Nov", "total": 10.0, "runs": [{"miles": 10.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-11-03", "dow": "Tue", "dnum": 3, "month": "Nov", "total": 9.0, "runs": [{"miles": 9.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-11-04", "dow": "Wed", "dnum": 4, "month": "Nov", "total": 10.0, "runs": [{"miles": 4.0, "type": "Run Club", "city": "Boise", "location": "Boise High School Track", "terrain": "Outdoor Track", "note": "Tree City Track Club"}, {"miles": 6.0, "type": "Run Club", "city": "Nampa", "location": "Kingfisher Trail", "terrain": "Gravel Road", "note": "Boise Area Runners"}]}, {"date": "2026-11-05", "dow": "Thu", "dnum": 5, "month": "Nov", "total": 13.0, "runs": [{"miles": 13.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-11-06", "dow": "Fri", "dnum": 6, "month": "Nov", "total": 10.0, "runs": [{"miles": 10.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-11-07", "dow": "Sat", "dnum": 7, "month": "Nov", "total": 9.0, "runs": [{"miles": 9.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-11-08", "dow": "Sun", "dnum": 8, "month": "Nov", "total": 9.0, "runs": [{"miles": 9.0, "type": "Run Club", "city": "Boise", "location": "Camel's Back Trail", "terrain": "Dirt Hills", "note": "Boise Area Runners"}]}]}, {"week": 112, "label": "Nov 9\u201315, 2026", "start": "2026-11-09", "end": "2026-11-15", "miles": 80.0, "days": [{"date": "2026-11-09", "dow": "Mon", "dnum": 9, "month": "Nov", "total": 13.0, "runs": [{"miles": 13.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-11-10", "dow": "Tue", "dnum": 10, "month": "Nov", "total": 10.0, "runs": [{"miles": 10.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-11-11", "dow": "Wed", "dnum": 11, "month": "Nov", "total": 10.0, "runs": [{"miles": 4.0, "type": "Run Club", "city": "Boise", "location": "Boise High School Track", "terrain": "Outdoor Track", "note": "Tree City Track Club"}, {"miles": 6.0, "type": "Run Club", "city": "Nampa", "location": "Kingfisher Trail", "terrain": "Gravel Road", "note": "Boise Area Runners"}]}, {"date": "2026-11-12", "dow": "Thu", "dnum": 12, "month": "Nov", "total": 13.0, "runs": [{"miles": 13.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-11-13", "dow": "Fri", "dnum": 13, "month": "Nov", "total": 10.0, "runs": [{"miles": 10.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-11-14", "dow": "Sat", "dnum": 14, "month": "Nov", "total": 15.0, "runs": [{"miles": 15.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-11-15", "dow": "Sun", "dnum": 15, "month": "Nov", "total": 9.0, "runs": [{"miles": 9.0, "type": "Run Club", "city": "Boise", "location": "Camel's Back Trail", "terrain": "Dirt Hills", "note": "Boise Area Runners"}]}]}, {"week": 113, "label": "Nov 16\u201322, 2026", "start": "2026-11-16", "end": "2026-11-22", "miles": 90.0, "days": [{"date": "2026-11-16", "dow": "Mon", "dnum": 16, "month": "Nov", "total": 13.0, "runs": [{"miles": 13.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-11-17", "dow": "Tue", "dnum": 17, "month": "Nov", "total": 13.0, "runs": [{"miles": 13.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-11-18", "dow": "Wed", "dnum": 18, "month": "Nov", "total": 12.0, "runs": [{"miles": 6.0, "type": "Run Club", "city": "Boise", "location": "Boise High School Track", "terrain": "Outdoor Track", "note": "Tree City Track Club"}, {"miles": 6.0, "type": "Run Club", "city": "Nampa", "location": "Kingfisher Trail", "terrain": "Gravel Road", "note": "Boise Area Runners"}]}, {"date": "2026-11-19", "dow": "Thu", "dnum": 19, "month": "Nov", "total": 13.0, "runs": [{"miles": 13.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-11-20", "dow": "Fri", "dnum": 20, "month": "Nov", "total": 10.0, "runs": [{"miles": 10.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-11-21", "dow": "Sat", "dnum": 21, "month": "Nov", "total": 11.0, "runs": [{"miles": 11.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-11-22", "dow": "Sun", "dnum": 22, "month": "Nov", "total": 18.0, "runs": [{"miles": 18.0, "type": "Run Club", "city": "Boise", "location": "Camel's Back Trail", "terrain": "Dirt Hills", "note": "Boise Area Runners"}]}]}, {"week": 114, "label": "Nov 23\u201329, 2026", "start": "2026-11-23", "end": "2026-11-29", "miles": 100.0, "days": [{"date": "2026-11-23", "dow": "Mon", "dnum": 23, "month": "Nov", "total": 14.0, "runs": [{"miles": 14.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-11-24", "dow": "Tue", "dnum": 24, "month": "Nov", "total": 13.0, "runs": [{"miles": 13.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-11-25", "dow": "Wed", "dnum": 25, "month": "Nov", "total": 12.0, "runs": [{"miles": 6.0, "type": "Run Club", "city": "Boise", "location": "Boise High School Track", "terrain": "Outdoor Track", "note": "Tree City Track Club"}, {"miles": 6.0, "type": "Run Club", "city": "Nampa", "location": "Kingfisher Trail", "terrain": "Gravel Road", "note": "Boise Area Runners"}]}, {"date": "2026-11-26", "dow": "Thu", "dnum": 26, "month": "Nov", "total": 16.0, "runs": [{"miles": 16.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-11-27", "dow": "Fri", "dnum": 27, "month": "Nov", "total": 13.0, "runs": [{"miles": 13.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-11-28", "dow": "Sat", "dnum": 28, "month": "Nov", "total": 14.0, "runs": [{"miles": 14.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-11-29", "dow": "Sun", "dnum": 29, "month": "Nov", "total": 18.0, "runs": [{"miles": 18.0, "type": "Run Club", "city": "Boise", "location": "Camel's Back Trail", "terrain": "Dirt Hills", "note": "Boise Area Runners"}]}]}, {"week": 115, "label": "Nov 30 \u2013 Dec 6, 2026", "start": "2026-11-30", "end": "2026-12-06", "miles": 100.0, "days": [{"date": "2026-11-30", "dow": "Mon", "dnum": 30, "month": "Nov", "total": 14.0, "runs": [{"miles": 14.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-12-01", "dow": "Tue", "dnum": 1, "month": "Dec", "total": 13.0, "runs": [{"miles": 13.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-12-02", "dow": "Wed", "dnum": 2, "month": "Dec", "total": 12.0, "runs": [{"miles": 6.0, "type": "Run Club", "city": "Boise", "location": "Boise High School Track", "terrain": "Outdoor Track", "note": "Tree City Track Club"}, {"miles": 6.0, "type": "Run Club", "city": "Nampa", "location": "Kingfisher Trail", "terrain": "Gravel Road", "note": "Boise Area Runners"}]}, {"date": "2026-12-03", "dow": "Thu", "dnum": 3, "month": "Dec", "total": 16.0, "runs": [{"miles": 16.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-12-04", "dow": "Fri", "dnum": 4, "month": "Dec", "total": 13.0, "runs": [{"miles": 13.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-12-05", "dow": "Sat", "dnum": 5, "month": "Dec", "total": 14.0, "runs": [{"miles": 14.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-12-06", "dow": "Sun", "dnum": 6, "month": "Dec", "total": 18.0, "runs": [{"miles": 18.0, "type": "Run Club", "city": "Boise", "location": "Camel's Back Trail", "terrain": "Dirt Hills", "note": "Boise Area Runners"}]}]}, {"week": 116, "label": "Dec 7\u201313, 2026", "start": "2026-12-07", "end": "2026-12-13", "miles": 100.0, "days": [{"date": "2026-12-07", "dow": "Mon", "dnum": 7, "month": "Dec", "total": 14.0, "runs": [{"miles": 14.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-12-08", "dow": "Tue", "dnum": 8, "month": "Dec", "total": 13.0, "runs": [{"miles": 13.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-12-09", "dow": "Wed", "dnum": 9, "month": "Dec", "total": 12.0, "runs": [{"miles": 6.0, "type": "Run Club", "city": "Boise", "location": "Boise High School Track", "terrain": "Outdoor Track", "note": "Tree City Track Club"}, {"miles": 6.0, "type": "Run Club", "city": "Nampa", "location": "Kingfisher Trail", "terrain": "Gravel Road", "note": "Boise Area Runners"}]}, {"date": "2026-12-10", "dow": "Thu", "dnum": 10, "month": "Dec", "total": 16.0, "runs": [{"miles": 16.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-12-11", "dow": "Fri", "dnum": 11, "month": "Dec", "total": 13.0, "runs": [{"miles": 13.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-12-12", "dow": "Sat", "dnum": 12, "month": "Dec", "total": 14.0, "runs": [{"miles": 14.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-12-13", "dow": "Sun", "dnum": 13, "month": "Dec", "total": 18.0, "runs": [{"miles": 18.0, "type": "Run Club", "city": "Boise", "location": "Camel's Back Trail", "terrain": "Dirt Hills", "note": "Boise Area Runners"}]}]}, {"week": 117, "label": "Dec 14\u201320, 2026", "start": "2026-12-14", "end": "2026-12-20", "miles": 100.0, "days": [{"date": "2026-12-14", "dow": "Mon", "dnum": 14, "month": "Dec", "total": 14.0, "runs": [{"miles": 14.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-12-15", "dow": "Tue", "dnum": 15, "month": "Dec", "total": 13.0, "runs": [{"miles": 13.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-12-16", "dow": "Wed", "dnum": 16, "month": "Dec", "total": 12.0, "runs": [{"miles": 6.0, "type": "Run Club", "city": "Boise", "location": "Boise High School Track", "terrain": "Outdoor Track", "note": "Tree City Track Club"}, {"miles": 6.0, "type": "Run Club", "city": "Nampa", "location": "Kingfisher Trail", "terrain": "Gravel Road", "note": "Boise Area Runners"}]}, {"date": "2026-12-17", "dow": "Thu", "dnum": 17, "month": "Dec", "total": 16.0, "runs": [{"miles": 16.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-12-18", "dow": "Fri", "dnum": 18, "month": "Dec", "total": 13.0, "runs": [{"miles": 13.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-12-19", "dow": "Sat", "dnum": 19, "month": "Dec", "total": 14.0, "runs": [{"miles": 14.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-12-20", "dow": "Sun", "dnum": 20, "month": "Dec", "total": 18.0, "runs": [{"miles": 18.0, "type": "Run Club", "city": "Boise", "location": "Camel's Back Trail", "terrain": "Dirt Hills", "note": "Boise Area Runners"}]}]}, {"week": 118, "label": "Dec 21\u201327, 2026", "start": "2026-12-21", "end": "2026-12-27", "miles": 100.0, "days": [{"date": "2026-12-21", "dow": "Mon", "dnum": 21, "month": "Dec", "total": 14.0, "runs": [{"miles": 14.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-12-22", "dow": "Tue", "dnum": 22, "month": "Dec", "total": 13.0, "runs": [{"miles": 13.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-12-23", "dow": "Wed", "dnum": 23, "month": "Dec", "total": 12.0, "runs": [{"miles": 6.0, "type": "Run Club", "city": "Boise", "location": "Boise High School Track", "terrain": "Outdoor Track", "note": "Tree City Track Club"}, {"miles": 6.0, "type": "Run Club", "city": "Nampa", "location": "Kingfisher Trail", "terrain": "Gravel Road", "note": "Boise Area Runners"}]}, {"date": "2026-12-24", "dow": "Thu", "dnum": 24, "month": "Dec", "total": 16.0, "runs": [{"miles": 16.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-12-25", "dow": "Fri", "dnum": 25, "month": "Dec", "total": 13.0, "runs": [{"miles": 13.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-12-26", "dow": "Sat", "dnum": 26, "month": "Dec", "total": 14.0, "runs": [{"miles": 14.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-12-27", "dow": "Sun", "dnum": 27, "month": "Dec", "total": 18.0, "runs": [{"miles": 18.0, "type": "Run Club", "city": "Boise", "location": "Camel's Back Trail", "terrain": "Dirt Hills", "note": "Boise Area Runners"}]}]}, {"week": 119, "label": "Dec 28, 2026 \u2013 Jan 3, 2027", "start": "2026-12-28", "end": "2027-01-03", "miles": 90.0, "days": [{"date": "2026-12-28", "dow": "Mon", "dnum": 28, "month": "Dec", "total": 13.0, "runs": [{"miles": 13.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-12-29", "dow": "Tue", "dnum": 29, "month": "Dec", "total": 13.0, "runs": [{"miles": 13.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2026-12-30", "dow": "Wed", "dnum": 30, "month": "Dec", "total": 12.0, "runs": [{"miles": 6.0, "type": "Run Club", "city": "Boise", "location": "Boise High School Track", "terrain": "Outdoor Track", "note": "Tree City Track Club"}, {"miles": 6.0, "type": "Run Club", "city": "Nampa", "location": "Kingfisher Trail", "terrain": "Gravel Road", "note": "Boise Area Runners"}]}, {"date": "2026-12-31", "dow": "Thu", "dnum": 31, "month": "Dec", "total": 13.0, "runs": [{"miles": 13.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2027-01-01", "dow": "Fri", "dnum": 1, "month": "Jan", "total": 10.0, "runs": [{"miles": 10.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2027-01-02", "dow": "Sat", "dnum": 2, "month": "Jan", "total": 11.0, "runs": [{"miles": 11.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2027-01-03", "dow": "Sun", "dnum": 3, "month": "Jan", "total": 18.0, "runs": [{"miles": 18.0, "type": "Run Club", "city": "Boise", "location": "Camel's Back Trail", "terrain": "Dirt Hills", "note": "Boise Area Runners"}]}]}, {"week": 120, "label": "Jan 4\u201310, 2027", "start": "2027-01-04", "end": "2027-01-10", "miles": 80.0, "days": [{"date": "2027-01-04", "dow": "Mon", "dnum": 4, "month": "Jan", "total": 13.0, "runs": [{"miles": 13.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2027-01-05", "dow": "Tue", "dnum": 5, "month": "Jan", "total": 10.0, "runs": [{"miles": 10.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2027-01-06", "dow": "Wed", "dnum": 6, "month": "Jan", "total": 10.0, "runs": [{"miles": 4.0, "type": "Run Club", "city": "Boise", "location": "Boise High School Track", "terrain": "Outdoor Track", "note": "Tree City Track Club"}, {"miles": 6.0, "type": "Run Club", "city": "Nampa", "location": "Kingfisher Trail", "terrain": "Gravel Road", "note": "Boise Area Runners"}]}, {"date": "2027-01-07", "dow": "Thu", "dnum": 7, "month": "Jan", "total": 13.0, "runs": [{"miles": 13.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2027-01-08", "dow": "Fri", "dnum": 8, "month": "Jan", "total": 10.0, "runs": [{"miles": 10.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2027-01-09", "dow": "Sat", "dnum": 9, "month": "Jan", "total": 15.0, "runs": [{"miles": 15.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2027-01-10", "dow": "Sun", "dnum": 10, "month": "Jan", "total": 9.0, "runs": [{"miles": 9.0, "type": "Run Club", "city": "Boise", "location": "Camel's Back Trail", "terrain": "Dirt Hills", "note": "Boise Area Runners"}]}]}, {"week": 121, "label": "Jan 11\u201317, 2027", "start": "2027-01-11", "end": "2027-01-17", "miles": 70.0, "days": [{"date": "2027-01-11", "dow": "Mon", "dnum": 11, "month": "Jan", "total": 10.0, "runs": [{"miles": 10.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2027-01-12", "dow": "Tue", "dnum": 12, "month": "Jan", "total": 9.0, "runs": [{"miles": 9.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2027-01-13", "dow": "Wed", "dnum": 13, "month": "Jan", "total": 10.0, "runs": [{"miles": 4.0, "type": "Run Club", "city": "Boise", "location": "Boise High School Track", "terrain": "Outdoor Track", "note": "Tree City Track Club"}, {"miles": 6.0, "type": "Run Club", "city": "Nampa", "location": "Kingfisher Trail", "terrain": "Gravel Road", "note": "Boise Area Runners"}]}, {"date": "2027-01-14", "dow": "Thu", "dnum": 14, "month": "Jan", "total": 13.0, "runs": [{"miles": 13.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2027-01-15", "dow": "Fri", "dnum": 15, "month": "Jan", "total": 10.0, "runs": [{"miles": 10.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2027-01-16", "dow": "Sat", "dnum": 16, "month": "Jan", "total": 9.0, "runs": [{"miles": 9.0, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2027-01-17", "dow": "Sun", "dnum": 17, "month": "Jan", "total": 9.0, "runs": [{"miles": 9.0, "type": "Run Club", "city": "Boise", "location": "Camel's Back Trail", "terrain": "Dirt Hills", "note": "Boise Area Runners"}]}]}, {"week": 122, "label": "Jan 18\u201324, 2027", "start": "2027-01-18", "end": "2027-01-24", "miles": 68.5, "days": [{"date": "2027-01-18", "dow": "Mon", "dnum": 18, "month": "Jan", "total": 6.25, "runs": [{"miles": 6.25, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2027-01-19", "dow": "Tue", "dnum": 19, "month": "Jan", "total": 6.25, "runs": [{"miles": 6.25, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2027-01-20", "dow": "Wed", "dnum": 20, "month": "Jan", "total": 6.25, "runs": [{"miles": 6.25, "type": "Run Club", "city": "Nampa", "location": "Kingfisher Trail", "terrain": "Gravel Road", "note": "Boise Area Runners"}]}, {"date": "2027-01-21", "dow": "Thu", "dnum": 21, "month": "Jan", "total": 6.25, "runs": [{"miles": 6.25, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2027-01-22", "dow": "Fri", "dnum": 22, "month": "Jan", "total": 6.25, "runs": [{"miles": 6.25, "type": "Solo Run", "city": "Caldwell", "location": "Suburbs", "terrain": "Concrete", "note": "Daily Run"}]}, {"date": "2027-01-23", "dow": "Sat", "dnum": 23, "month": "Jan", "total": 31.0, "runs": [{"miles": 31.0, "type": "Race", "city": "Wilson", "location": "Wilson Creek Trails", "terrain": "Dirt Hills", "note": "Wilson Creek Frozen 50K"}]}, {"date": "2027-01-24", "dow": "Sun", "dnum": 24, "month": "Jan", "total": 6.25, "runs": [{"miles": 6.25, "type": "Run Club", "city": "Boise", "location": "Camel's Back Trail", "terrain": "Dirt Hills", "note": "Boise Area Runners"}]}]}];
+
+const PHASES = [
+  {
+    key:"race-prep", from:101, to:110,
+    eyebrow:"Phase 1 \u00b7 Aug\u2013Nov 2026",
+    title:"Race prep \u2014 road season",
+    note:"Holding at 60 miles a week while I get through four races on the calendar: a 10K, a half marathon, and two marathons back-to-back in October. One track workout a week, every week, except the week I run the Idaho Running Day Marathon six days after City of Trees."
+  },
+  {
+    key:"nov-build", from:111, to:114,
+    eyebrow:"Phase 2 \u00b7 Nov 2026",
+    title:"November build",
+    note:"Marathons are done, so it's time to build a bigger base for the ultra. Mileage climbs by 10 miles a week \u2014 70, 80, 90, then 100 \u2014 with more trail miles and elevation gain mixed in."
+  },
+  {
+    key:"dec-peak", from:115, to:118,
+    eyebrow:"Phase 3 \u00b7 Dec 2026",
+    title:"December peak",
+    note:"Four straight weeks at 100 miles, the biggest sustained volume I've ever run. Still hitting the track weekly, but the emphasis shifts to trail running and climbing to get ready for Wilson Creek's terrain."
+  },
+  {
+    key:"taper", from:119, to:122,
+    eyebrow:"Phase 4 \u00b7 Dec 2026\u2013Jan 2027",
+    title:"Taper to the Frozen 50K",
+    note:"Mileage steps back down \u2014 90, 80, 70 \u2014 heading into race week at Wilson Creek. The Frozen 50K is the goal race and the reason for the whole block."
+  }
+];
+
+const fmt = n => n.toLocaleString(undefined,{minimumFractionDigits:1,maximumFractionDigits:2});
+
+function formatRange(startISO, endISO){
+  const opts = {month:'short', day:'numeric', year:'numeric'};
+  const s = new Date(startISO+'T00:00:00').toLocaleDateString('en-US', opts);
+  const e = new Date(endISO+'T00:00:00').toLocaleDateString('en-US', opts);
+  return s + ' \u2014 ' + e + '.';
+}
+
+// Derive whether a week has a track workout / race from its days
+function weekHasTrack(w){
+  return w.days.some(d => d.runs.some(r => r.terrain === 'Outdoor Track'));
+}
+function weekRaces(w){
+  const races = [];
+  w.days.forEach(d => d.runs.forEach(r => { if(r.type === 'Race') races.push(r.note); }));
+  return races;
+}
+
+// ---- Hero
+const totalMiles = WEEKS.reduce((s,w)=>s+w.miles,0);
+const avgMiles = totalMiles / WEEKS.length;
+const peak = WEEKS.reduce((a,b)=> b.miles>a.miles?b:a, WEEKS[0]);
+const trackWeeks = WEEKS.filter(weekHasTrack).length;
+const raceWeeks = WEEKS.filter(w => weekRaces(w).length);
+document.getElementById('heroWeeks').innerHTML = WEEKS.length + '<span>.</span>';
+document.getElementById('heroSub').textContent = formatRange(WEEKS[0].start, WEEKS[WEEKS.length-1].end);
+
+const stats = [
+  {v: fmt(totalMiles), l:'Planned miles'},
+  {v: fmt(avgMiles), l:'Avg mi / week'},
+  {v: fmt(peak.miles), l:'Peak week (mi)'},
+  {v: trackWeeks, l:'Track weeks'},
+  {v: raceWeeks.length, l:'Races on the calendar'},
+  {v: '50K', l:'Goal race \u2014 Jan 23'}
+];
+document.getElementById('statBand').innerHTML = stats.map(s=>'<div class="stat-cell"><div class="v">'+s.v+'</div><div class="l">'+s.l+'</div></div>').join('');
+document.getElementById('introSub').textContent = WEEKS.length + ' weeks \u00b7 ' + fmt(totalMiles) + ' planned miles \u00b7 ' + formatRange(WEEKS[0].start, WEEKS[WEEKS.length-1].end);
+
+// ---- Phases + weekly calendar
+function renderDayCell(day){
+  const isRace = day.runs.some(r => r.type === 'Race');
+  if(!day.runs.length){
+    return '<div class="day-cell is-rest">'
+      + '<div class="dc-dow">'+day.dow+'</div>'
+      + '<div class="dc-date">'+day.month+' '+day.dnum+'</div>'
+      + '<div class="dc-rest">Rest</div>'
+      + '</div>';
+  }
+  const runsHtml = day.runs.map(r => {
+    const metaBits = [r.type];
+    if(r.terrain) metaBits.push(r.terrain);
+    if(r.city) metaBits.push(r.city);
+    return '<div class="day-run">'
+      + '<div class="dr-miles">'+fmt(r.miles)+' mi</div>'
+      + '<div class="dr-note">'+r.note+'</div>'
+      + '<div class="dr-meta">'+metaBits.join(' \u00b7 ')+'</div>'
+      + '</div>';
+  }).join('');
+  return '<div class="day-cell'+(isRace?' is-race':'')+'">'
+    + '<div class="dc-dow">'+day.dow+'</div>'
+    + '<div class="dc-date">'+day.month+' '+day.dnum+'</div>'
+    + runsHtml
+    + '</div>';
+}
+
+function renderWeekCal(w){
+  const days = w.days.map(renderDayCell).join('');
+  return '<div class="week-cal">'
+    + '<div class="week-summary">'
+      + '<div class="wk-num">Week '+w.week+'</div>'
+      + '<div class="wk-range">'+w.label+'</div>'
+      + '<div class="wk-total">'+fmt(w.miles)+'<small> mi</small></div>'
+    + '</div>'
+    + days
+    + '</div>';
+}
+
+document.getElementById('phaseList').innerHTML = PHASES.map(p => {
+  const ws = WEEKS.filter(w => w.week >= p.from && w.week <= p.to);
+  const total = ws.reduce((s,w)=>s+w.miles,0);
+  const avg = total / ws.length;
+  const races = [];
+  ws.forEach(w => weekRaces(w).forEach(r => races.push(r)));
+  const chips = [
+    '<span class="chip"><b>'+ws.length+'</b> weeks</span>',
+    '<span class="chip"><b>'+fmt(total)+' mi</b> total</span>',
+    '<span class="chip">avg <b>'+fmt(avg)+' mi</b> / week</span>'
+  ];
+  races.forEach(r => chips.push('<span class="chip">'+r+'</span>'));
+  const cals = ws.map(renderWeekCal).join('');
+  return '<div class="phase">'
+    + '<p class="phase-eyebrow">'+p.eyebrow+'</p>'
+    + '<h3 class="phase-title">'+p.title+'</h3>'
+    + '<div class="phase-stats">'+chips.join('')+'</div>'
+    + '<p class="phase-note">'+p.note+'</p>'
+    + '<div class="week-cal-list">'+cals+'</div>'
+    + '</div>';
+}).join('');
+
+document.getElementById('footerText').textContent = 'Training plan \u00b7 ' + WEEKS.length + ' weeks \u00b7 ' + formatRange(WEEKS[0].start, WEEKS[WEEKS.length-1].end) + ' \u00b7 generated from the runs log';
+</script>
+
+</body>
+</html>
