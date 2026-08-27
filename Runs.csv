@@ -654,11 +654,177 @@
 643,100,08-22-26,6.51,0:57:59,57.98,8:54,62,2435,677,Garmin,Saucony Cohesion 17,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
 644,100,08-22-26,6.32,1:01:17,61.28,9:42,66,2440,671,Garmin,Saucony Cohesion 17,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
 645,100,08-23-26,9.27,1:47:07,107.12,11:33,1358,3930,1019,Garmin,Asics Gel-Venture 11,Run Club,Boise,Camel's Back Trail,Dirt Hills,Boise Area Runners
-646,101,08-24-26,11.00,,0.00,0:00,,,,Garmin,Saucony Cohesion 17,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
-647,101,08-25-26,10.00,,0.00,0:00,,,,Garmin,Asics Novablast 6,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
-648,101,08-26-26,4.00,,0.00,0:00,,,,Garmin,Asics Gel-Nimbus 28,Run Club,Boise,Boise High School Track,Outdoor Track,Tree City Track Club
-649,101,08-26-26,6.00,,0.00,0:00,,,,Garmin,Asics Gel-Venture 11,Run Club,Nampa,Kingfisher Trail,Gravel Road,Boise Area Runners
-650,101,08-27-26,7.00,,0.00,0:00,,,,Garmin,Asics Gel-Nimbus 28,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
-651,101,08-28-26,7.00,,0.00,0:00,,,,Garmin,Asics Novablast 6,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
-652,101,08-29-26,6.25,,0.00,0:00,,,,Garmin,Asics Gel-Nimbus 28,Race,Nampa,Centennial Elementary School,Asphalt,Great Futures 10K
-654,101,08-30-26,9.00,,0.00,0:00,,,,Garmin,Asics Gel-Venture 11,Run Club,Boise,Camel's Back Trail,Dirt Hills,Boise Area Runners
+646,101,08-24-26,11.00,,,,,,,Garmin,Saucony Cohesion 17,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+647,101,08-25-26,10.00,,,,,,,Garmin,Asics Novablast 6,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+648,101,08-26-26,4.00,,,,,,,Garmin,Asics Gel-Nimbus 28,Run Club,Boise,Boise High School Track,Outdoor Track,Tree City Track Club
+649,101,08-26-26,6.00,,,,,,,Garmin,Asics Gel-Venture 11,Run Club,Nampa,Kingfisher Trail,Gravel Road,Boise Area Runners
+650,101,08-27-26,7.00,,,,,,,Garmin,Asics Gel-Nimbus 28,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+651,101,08-28-26,7.00,,,,,,,Garmin,Asics Novablast 6,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+652,101,08-29-26,6.25,,,,,,,Garmin,Asics Gel-Nimbus 28,Race,Nampa,Centennial Elementary School,Asphalt,Great Futures 10K
+653,101,08-30-26,9.00,,,,,,,Garmin,Asics Gel-Venture 11,Run Club,Boise,Camel's Back Trail,Dirt Hills,Boise Area Runners
+654,102,08-31-26,8.00,,,,,,,Garmin,Asics Gel-Nimbus 28,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+655,102,09-01-26,7.00,,,,,,,Garmin,Asics Novablast 6,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+656,102,09-02-26,4.00,,,,,,,Garmin,Asics Gel-Nimbus 28,Run Club,Boise,Boise High School Track,Outdoor Track,Tree City Track Club
+657,102,09-02-26,6.00,,,,,,,Garmin,Asics Gel-Venture 11,Run Club,Nampa,Kingfisher Trail,Gravel Road,Boise Area Runners
+658,102,09-03-26,8.00,,,,,,,Garmin,Asics Novablast 6,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+659,102,09-04-26,9.00,,,,,,,Garmin,Asics Gel-Nimbus 28,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+660,102,09-05-26,9.00,,,,,,,Garmin,Asics Novablast 6,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+661,102,09-06-26,9.00,,,,,,,Garmin,Asics Gel-Venture 11,Run Club,Boise,Camel's Back Trail,Dirt Hills,Boise Area Runners
+662,103,09-07-26,10.00,,,,,,,Garmin,Asics Gel-Nimbus 28,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+663,103,09-08-26,7.00,,,,,,,Garmin,Asics Novablast 6,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+664,103,09-09-26,4.00,,,,,,,Garmin,Asics Gel-Nimbus 28,Run Club,Boise,Boise High School Track,Outdoor Track,Tree City Track Club
+665,103,09-09-26,6.00,,,,,,,Garmin,Asics Gel-Venture 11,Run Club,Nampa,Kingfisher Trail,Gravel Road,Boise Area Runners
+666,103,09-10-26,8.00,,,,,,,Garmin,Asics Novablast 6,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+667,103,09-11-26,8.00,,,,,,,Garmin,Asics Gel-Nimbus 28,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+668,103,09-12-26,8.00,,,,,,,Garmin,Asics Novablast 6,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+669,103,09-13-26,9.00,,,,,,,Garmin,Asics Gel-Venture 11,Run Club,Boise,Camel's Back Trail,Dirt Hills,Boise Area Runners
+670,104,09-14-26,8.00,,,,,,,Garmin,Asics Gel-Nimbus 28,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+671,104,09-15-26,8.00,,,,,,,Garmin,Asics Novablast 6,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+672,104,09-16-26,4.00,,,,,,,Garmin,Asics Gel-Nimbus 28,Run Club,Boise,Boise High School Track,Outdoor Track,Tree City Track Club
+673,104,09-16-26,6.00,,,,,,,Garmin,Asics Gel-Venture 11,Run Club,Nampa,Kingfisher Trail,Gravel Road,Boise Area Runners
+674,104,09-17-26,7.00,,,,,,,Garmin,Asics Novablast 6,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+675,104,09-18-26,8.00,,,,,,,Garmin,Asics Gel-Nimbus 28,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+676,104,09-19-26,10.00,,,,,,,Garmin,Asics Gel-Venture 11,Run Club,Boise,Trail,Dirt Hills,Boise Long Run Club
+677,104,09-20-26,9.00,,,,,,,Garmin,Asics Gel-Venture 11,Run Club,Boise,Camel's Back Trail,Dirt Hills,Boise Area Runners
+678,105,09-21-26,7.00,,,,,,,Garmin,Asics Gel-Nimbus 28,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+679,105,09-22-26,7.00,,,,,,,Garmin,Asics Novablast 6,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+680,105,09-23-26,4.00,,,,,,,Garmin,Asics Gel-Nimbus 28,Run Club,Boise,Boise High School Track,Outdoor Track,Tree City Track Club
+681,105,09-23-26,6.00,,,,,,,Garmin,Asics Gel-Venture 11,Run Club,Nampa,Kingfisher Trail,Gravel Road,Boise Area Runners
+682,105,09-24-26,7.00,,,,,,,Garmin,Asics Novablast 6,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+683,105,09-25-26,7.00,,,,,,,Garmin,Asics Gel-Nimbus 28,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+684,105,09-26-26,13.13,,,,,,,Garmin,Asics Novablast 6,Race,Boise,Greenbelt - Ann Morrison Park,Asphalt,Fit One Half Marathon
+685,105,09-27-26,9.00,,,,,,,Garmin,Asics Gel-Venture 11,Run Club,Boise,Camel's Back Trail,Dirt Hills,Boise Area Runners
+686,106,09-28-26,8.00,,,,,,,Garmin,Asics Gel-Nimbus 28,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+687,106,09-29-26,7.00,,,,,,,Garmin,Asics Novablast 6,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+688,106,09-30-26,4.00,,,,,,,Garmin,Asics Gel-Nimbus 28,Run Club,Boise,Boise High School Track,Outdoor Track,Tree City Track Club
+689,106,09-30-26,6.00,,,,,,,Garmin,Asics Gel-Venture 11,Run Club,Nampa,Kingfisher Trail,Gravel Road,Boise Area Runners
+690,106,10-01-26,8.00,,,,,,,Garmin,Asics Novablast 6,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+691,106,10-02-26,9.00,,,,,,,Garmin,Asics Gel-Nimbus 28,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+692,106,10-03-26,9.00,,,,,,,Garmin,Asics Novablast 6,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+693,106,10-04-26,9.00,,,,,,,Garmin,Asics Gel-Venture 11,Run Club,Boise,Camel's Back Trail,Dirt Hills,Boise Area Runners
+694,107,10-05-26,6.25,,,,,,,Garmin,Asics Gel-Nimbus 28,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+695,107,10-06-26,6.25,,,,,,,Garmin,Asics Novablast 6,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+696,107,10-07-26,4.00,,,,,,,Garmin,Asics Gel-Nimbus 28,Run Club,Boise,Boise High School Track,Outdoor Track,Tree City Track Club
+697,107,10-07-26,6.00,,,,,,,Garmin,Asics Gel-Venture 11,Run Club,Nampa,Kingfisher Trail,Gravel Road,Boise Area Runners
+698,107,10-08-26,7.00,,,,,,,Garmin,Asics Gel-Nimbus 28,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+699,107,10-09-26,6.25,,,,,,,Garmin,Asics Novablast 6,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+700,107,10-10-26,6.25,,,,,,,Garmin,Asics Gel-Nimbus 28,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+701,107,10-11-26,26.25,,,,,,,Garmin,Asics Novablast 6,Race,Boise,Greenbelt - Payette Brewing,Asphalt,City of Trees Marathon
+702,108,10-12-26,6.25,,,,,,,Garmin,Asics Gel-Nimbus 28,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+703,108,10-13-26,6.25,,,,,,,Garmin,Asics Novablast 6,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+704,108,10-14-26,6.25,,,,,,,Garmin,Asics Gel-Venture 11,Run Club,Nampa,Kingfisher Trail,Gravel Road,Boise Area Runners
+705,108,10-15-26,6.25,,,,,,,Garmin,Asics Novablast 6,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+706,108,10-16-26,6.25,,,,,,,Garmin,Asics Gel-Nimbus 28,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+707,108,10-17-26,26.25,,,,,,,Garmin,Asics Novablast 6,Race,Boise,Greenbelt - Lucky Peak State Park,Asphalt,Idaho Running Day Marathon
+708,108,10-18-26,6.25,,,,,,,Garmin,Asics Gel-Venture 11,Run Club,Boise,Camel's Back Trail,Dirt Hills,Boise Area Runners
+709,109,10-19-26,7.00,,,,,,,Garmin,Asics Gel-Nimbus 28,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+710,109,10-20-26,7.00,,,,,,,Garmin,Asics Novablast 6,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+711,109,10-21-26,4.00,,,,,,,Garmin,Asics Gel-Nimbus 28,Run Club,Boise,Boise High School Track,Outdoor Track,Tree City Track Club
+712,109,10-21-26,6.00,,,,,,,Garmin,Asics Gel-Venture 11,Run Club,Nampa,Kingfisher Trail,Gravel Road,Boise Area Runners
+713,109,10-22-26,8.00,,,,,,,Garmin,Asics Novablast 6,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+714,109,10-23-26,9.00,,,,,,,Garmin,Asics Gel-Nimbus 28,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+715,109,10-24-26,10.00,,,,,,,Garmin,Asics Novablast 6,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+716,109,10-25-26,9.00,,,,,,,Garmin,Asics Gel-Venture 11,Run Club,Boise,Camel's Back Trail,Dirt Hills,Boise Area Runners
+717,110,10-26-26,10.00,,,,,,,Garmin,Asics Gel-Nimbus 28,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+718,110,10-27-26,7.00,,,,,,,Garmin,Asics Novablast 6,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+719,110,10-28-26,4.00,,,,,,,Garmin,Asics Gel-Nimbus 28,Run Club,Boise,Boise High School Track,Outdoor Track,Tree City Track Club
+720,110,10-28-26,6.00,,,,,,,Garmin,Asics Gel-Venture 11,Run Club,Nampa,Kingfisher Trail,Gravel Road,Boise Area Runners
+721,110,10-29-26,8.00,,,,,,,Garmin,Asics Novablast 6,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+722,110,10-30-26,8.00,,,,,,,Garmin,Asics Gel-Nimbus 28,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+723,110,10-31-26,8.00,,,,,,,Garmin,Asics Novablast 6,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+724,110,11-01-26,9.00,,,,,,,Garmin,Asics Gel-Venture 11,Run Club,Boise,Camel's Back Trail,Dirt Hills,Boise Area Runners
+725,111,11-02-26,10.00,,,,,,,Garmin,Asics Gel-Nimbus 28,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+726,111,11-03-26,9.00,,,,,,,Garmin,Asics Novablast 6,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+727,111,11-04-26,4.00,,,,,,,Garmin,Asics Gel-Nimbus 28,Run Club,Boise,Boise High School Track,Outdoor Track,Tree City Track Club
+728,111,11-04-26,6.00,,,,,,,Garmin,Asics Gel-Venture 11,Run Club,Nampa,Kingfisher Trail,Gravel Road,Boise Area Runners
+729,111,11-05-26,13.00,,,,,,,Garmin,Asics Novablast 6,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+730,111,11-06-26,10.00,,,,,,,Garmin,Asics Gel-Nimbus 28,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+731,111,11-07-26,9.00,,,,,,,Garmin,Asics Novablast 6,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+732,111,11-08-26,9.00,,,,,,,Garmin,Asics Gel-Venture 11,Run Club,Boise,Camel's Back Trail,Dirt Hills,Boise Area Runners
+733,112,11-09-26,13.00,,,,,,,Garmin,Asics Gel-Nimbus 28,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+734,112,11-10-26,10.00,,,,,,,Garmin,Asics Novablast 6,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+735,112,11-11-26,4.00,,,,,,,Garmin,Asics Gel-Nimbus 28,Run Club,Boise,Boise High School Track,Outdoor Track,Tree City Track Club
+736,112,11-11-26,6.00,,,,,,,Garmin,Asics Gel-Venture 11,Run Club,Nampa,Kingfisher Trail,Gravel Road,Boise Area Runners
+737,112,11-12-26,13.00,,,,,,,Garmin,Asics Novablast 6,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+738,112,11-13-26,10.00,,,,,,,Garmin,Asics Gel-Nimbus 28,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+739,112,11-14-26,15.00,,,,,,,Garmin,Asics Novablast 6,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+740,112,11-15-26,9.00,,,,,,,Garmin,Asics Gel-Venture 11,Run Club,Boise,Camel's Back Trail,Dirt Hills,Boise Area Runners
+741,113,11-16-26,13.00,,,,,,,Garmin,Asics Gel-Nimbus 28,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+742,113,11-17-26,13.00,,,,,,,Garmin,Asics Novablast 6,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+743,113,11-18-26,6.00,,,,,,,Garmin,Asics Gel-Nimbus 28,Run Club,Boise,Boise High School Track,Outdoor Track,Tree City Track Club
+744,113,11-18-26,6.00,,,,,,,Garmin,Asics Gel-Venture 11,Run Club,Nampa,Kingfisher Trail,Gravel Road,Boise Area Runners
+745,113,11-19-26,13.00,,,,,,,Garmin,Asics Novablast 6,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+746,113,11-20-26,10.00,,,,,,,Garmin,Asics Gel-Nimbus 28,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+747,113,11-21-26,11.00,,,,,,,Garmin,Asics Novablast 6,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+748,113,11-22-26,18.00,,,,,,,Garmin,Asics Gel-Venture 11,Run Club,Boise,Camel's Back Trail,Dirt Hills,Boise Area Runners
+749,114,11-23-26,14.00,,,,,,,Garmin,Asics Gel-Nimbus 28,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+750,114,11-24-26,13.00,,,,,,,Garmin,Asics Novablast 6,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+751,114,11-25-26,6.00,,,,,,,Garmin,Asics Gel-Nimbus 28,Run Club,Boise,Boise High School Track,Outdoor Track,Tree City Track Club
+752,114,11-25-26,6.00,,,,,,,Garmin,Asics Gel-Venture 11,Run Club,Nampa,Kingfisher Trail,Gravel Road,Boise Area Runners
+753,114,11-26-26,16.00,,,,,,,Garmin,Asics Novablast 6,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+754,114,11-27-26,13.00,,,,,,,Garmin,Asics Gel-Nimbus 28,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+755,114,11-28-26,14.00,,,,,,,Garmin,Asics Novablast 6,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+756,114,11-29-26,18.00,,,,,,,Garmin,Asics Gel-Venture 11,Run Club,Boise,Camel's Back Trail,Dirt Hills,Boise Area Runners
+757,115,11-30-26,14.00,,,,,,,Garmin,Asics Gel-Nimbus 28,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+758,115,12-01-26,13.00,,,,,,,Garmin,Asics Novablast 6,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+759,115,12-02-26,6.00,,,,,,,Garmin,Asics Gel-Nimbus 28,Run Club,Boise,Boise High School Track,Outdoor Track,Tree City Track Club
+760,115,12-02-26,6.00,,,,,,,Garmin,Asics Gel-Venture 11,Run Club,Nampa,Kingfisher Trail,Gravel Road,Boise Area Runners
+761,115,12-03-26,16.00,,,,,,,Garmin,Asics Novablast 6,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+762,115,12-04-26,13.00,,,,,,,Garmin,Asics Gel-Nimbus 28,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+763,115,12-05-26,14.00,,,,,,,Garmin,Asics Novablast 6,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+764,115,12-06-26,18.00,,,,,,,Garmin,Asics Gel-Venture 11,Run Club,Boise,Camel's Back Trail,Dirt Hills,Boise Area Runners
+765,116,12-07-26,14.00,,,,,,,Garmin,Asics Gel-Nimbus 28,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+766,116,12-08-26,13.00,,,,,,,Garmin,Asics Novablast 6,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+767,116,12-09-26,6.00,,,,,,,Garmin,Asics Gel-Nimbus 28,Run Club,Boise,Boise High School Track,Outdoor Track,Tree City Track Club
+768,116,12-09-26,6.00,,,,,,,Garmin,Asics Gel-Venture 11,Run Club,Nampa,Kingfisher Trail,Gravel Road,Boise Area Runners
+769,116,12-10-26,16.00,,,,,,,Garmin,Asics Novablast 6,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+770,116,12-11-26,13.00,,,,,,,Garmin,Asics Gel-Nimbus 28,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+771,116,12-12-26,14.00,,,,,,,Garmin,Asics Novablast 6,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+772,116,12-13-26,18.00,,,,,,,Garmin,Asics Gel-Venture 11,Run Club,Boise,Camel's Back Trail,Dirt Hills,Boise Area Runners
+773,117,12-14-26,14.00,,,,,,,Garmin,Asics Gel-Nimbus 28,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+774,117,12-15-26,13.00,,,,,,,Garmin,Asics Novablast 6,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+775,117,12-16-26,6.00,,,,,,,Garmin,Asics Gel-Nimbus 28,Run Club,Boise,Boise High School Track,Outdoor Track,Tree City Track Club
+776,117,12-16-26,6.00,,,,,,,Garmin,Asics Gel-Venture 11,Run Club,Nampa,Kingfisher Trail,Gravel Road,Boise Area Runners
+777,117,12-17-26,16.00,,,,,,,Garmin,Asics Novablast 6,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+778,117,12-18-26,13.00,,,,,,,Garmin,Asics Gel-Nimbus 28,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+779,117,12-19-26,14.00,,,,,,,Garmin,Asics Novablast 6,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+780,117,12-20-26,18.00,,,,,,,Garmin,Asics Gel-Venture 11,Run Club,Boise,Camel's Back Trail,Dirt Hills,Boise Area Runners
+781,118,12-21-26,14.00,,,,,,,Garmin,Asics Gel-Nimbus 28,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+782,118,12-22-26,13.00,,,,,,,Garmin,Asics Novablast 6,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+783,118,12-23-26,6.00,,,,,,,Garmin,Asics Gel-Nimbus 28,Run Club,Boise,Boise High School Track,Outdoor Track,Tree City Track Club
+784,118,12-23-26,6.00,,,,,,,Garmin,Asics Gel-Venture 11,Run Club,Nampa,Kingfisher Trail,Gravel Road,Boise Area Runners
+785,118,12-24-26,16.00,,,,,,,Garmin,Asics Novablast 6,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+786,118,12-25-26,13.00,,,,,,,Garmin,Asics Gel-Nimbus 28,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+787,118,12-26-26,14.00,,,,,,,Garmin,Asics Novablast 6,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+788,118,12-27-26,18.00,,,,,,,Garmin,Asics Gel-Venture 11,Run Club,Boise,Camel's Back Trail,Dirt Hills,Boise Area Runners
+789,119,12-28-26,13.00,,,,,,,Garmin,Asics Gel-Nimbus 28,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+790,119,12-29-26,13.00,,,,,,,Garmin,Asics Novablast 6,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+791,119,12-30-26,6.00,,,,,,,Garmin,Asics Gel-Nimbus 28,Run Club,Boise,Boise High School Track,Outdoor Track,Tree City Track Club
+792,119,12-30-26,6.00,,,,,,,Garmin,Asics Gel-Venture 11,Run Club,Nampa,Kingfisher Trail,Gravel Road,Boise Area Runners
+793,119,12-31-26,13.00,,,,,,,Garmin,Asics Novablast 6,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+794,119,01-01-27,10.00,,,,,,,Garmin,Asics Gel-Nimbus 28,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+795,119,01-02-27,11.00,,,,,,,Garmin,Asics Novablast 6,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+796,119,01-03-27,18.00,,,,,,,Garmin,Asics Gel-Venture 11,Run Club,Boise,Camel's Back Trail,Dirt Hills,Boise Area Runners
+797,120,01-04-27,13.00,,,,,,,Garmin,Asics Gel-Nimbus 28,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+798,120,01-05-27,10.00,,,,,,,Garmin,Asics Novablast 6,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+799,120,01-06-27,4.00,,,,,,,Garmin,Asics Gel-Nimbus 28,Run Club,Boise,Boise High School Track,Outdoor Track,Tree City Track Club
+800,120,01-06-27,6.00,,,,,,,Garmin,Asics Gel-Venture 11,Run Club,Nampa,Kingfisher Trail,Gravel Road,Boise Area Runners
+801,120,01-07-27,13.00,,,,,,,Garmin,Asics Novablast 6,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+802,120,01-08-27,10.00,,,,,,,Garmin,Asics Gel-Nimbus 28,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+803,120,01-09-27,15.00,,,,,,,Garmin,Asics Novablast 6,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+804,120,01-10-27,9.00,,,,,,,Garmin,Asics Gel-Venture 11,Run Club,Boise,Camel's Back Trail,Dirt Hills,Boise Area Runners
+805,121,01-11-27,10.00,,,,,,,Garmin,Asics Gel-Nimbus 28,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+806,121,01-12-27,9.00,,,,,,,Garmin,Asics Novablast 6,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+807,121,01-13-27,4.00,,,,,,,Garmin,Asics Gel-Nimbus 28,Run Club,Boise,Boise High School Track,Outdoor Track,Tree City Track Club
+808,121,01-13-27,6.00,,,,,,,Garmin,Asics Gel-Venture 11,Run Club,Nampa,Kingfisher Trail,Gravel Road,Boise Area Runners
+809,121,01-14-27,13.00,,,,,,,Garmin,Asics Novablast 6,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+810,121,01-15-27,10.00,,,,,,,Garmin,Asics Gel-Nimbus 28,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+811,121,01-16-27,9.00,,,,,,,Garmin,Asics Novablast 6,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+812,121,01-17-27,9.00,,,,,,,Garmin,Asics Gel-Venture 11,Run Club,Boise,Camel's Back Trail,Dirt Hills,Boise Area Runners
+813,122,01-18-27,6.25,,,,,,,Garmin,Asics Gel-Nimbus 28,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+814,122,01-19-27,6.25,,,,,,,Garmin,Asics Novablast 6,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+815,122,01-20-27,6.25,,,,,,,Garmin,Asics Gel-Venture 11,Run Club,Nampa,Kingfisher Trail,Gravel Road,Boise Area Runners
+816,122,01-21-27,6.25,,,,,,,Garmin,Asics Novablast 6,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+817,122,01-22-27,6.25,,,,,,,Garmin,Asics Gel-Nimbus 28,Solo Run,Caldwell,Suburbs,Concrete,Daily Run
+818,122,01-23-27,31.00,,,,,,,Garmin,Asics Gel-Venture 11,Race,Wilson,Wilson Creek Trails,Dirt Hills,Wilson Creek Frozen 50K
+819,122,01-24-27,6.25,,,,,,,Garmin,Asics Gel-Venture 11,Run Club,Boise,Camel's Back Trail,Dirt Hills,Boise Area Runners
