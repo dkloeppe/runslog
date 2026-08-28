@@ -123,6 +123,11 @@
   .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
   .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
   @media(max-width:760px){.grid-2,.grid-3{grid-template-columns:1fr;}}
+  .dist-stats{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:20px;}
+  @media(max-width:760px){.dist-stats{grid-template-columns:repeat(2,1fr);}}
+  .dist-stat{background:var(--panel);border:1px solid var(--hair);border-radius:10px;padding:16px 14px;text-align:center;}
+  .dist-stat .v{font-family:'IBM Plex Mono',monospace;font-size:26px;color:var(--trail);font-weight:500;}
+  .dist-stat .l{font-size:11px;color:var(--slate);margin-top:6px;text-transform:uppercase;letter-spacing:0.04em;line-height:1.4;}
   .shoe-card{
     background:var(--panel);border:1px solid var(--hair);border-radius:12px;
     padding:18px 20px;position:relative;
@@ -288,6 +293,18 @@
         </table>
       </div>
     </div>
+  </section>
+
+  <section>
+    <div class="mi-marker"><span class="mi">DISTRIBUTION</span></div>
+    <h2>Distance breakdown</h2>
+    <p class="section-sub">How every logged run stacks up by distance, from short daily miles to race day.</p>
+    <div class="chart-card">
+      <div style="position:relative;width:100%;height:280px;">
+        <canvas id="distanceChart" role="img" aria-label="Histogram of run distances"></canvas>
+      </div>
+    </div>
+    <div class="dist-stats" id="distStats"></div>
   </section>
 
   <section>
@@ -508,6 +525,42 @@ document.querySelector('#longestTable tbody').innerHTML = DATA.longest_runs.map(
   '<tr><td>'+r.date+'</td><td class="mono">'+fmt(r.miles)+' mi</td><td class="mono">'+paceStr(r.pace)+'</td><td>'+(r.note||'')+'</td></tr>').join('');
 document.querySelector('#fastestTable tbody').innerHTML = DATA.fastest_runs.map(r=>
   '<tr><td>'+r.date+'</td><td class="mono">'+fmt(r.miles)+' mi</td><td class="mono">'+paceStr(r.pace)+'</td><td>'+(r.note||'')+'</td></tr>').join('');
+
+// ---- Distance distribution
+const DIST_BINS = [{"label":"0-2","count":3},{"label":"2-4","count":29},{"label":"4-6","count":26},{"label":"6-8","count":467},{"label":"8-10","count":51},{"label":"10-12","count":28},{"label":"12-14","count":36},{"label":"14-16","count":0},{"label":"16-18","count":2},{"label":"18-20","count":1},{"label":"20-22","count":0},{"label":"22-24","count":1},{"label":"24-26","count":0},{"label":"26-28","count":1}];
+const DIST_THRESHOLDS = [
+  {label:'Runs over<br>6.2 miles<br>(10K)', count:560},
+  {label:'Runs over<br>10 miles', count:69},
+  {label:'Runs over<br>12.4 miles<br>(20K)', count:29},
+  {label:'Runs over<br>13.1 miles<br>(half marathon)', count:20},
+  {label:'Runs over<br>26.2 miles<br>(marathon)', count:1}
+];
+new Chart(document.getElementById('distanceChart'), {
+  type:'bar',
+  data:{
+    labels: DIST_BINS.map(b=>b.label),
+    datasets:[{
+      label:'Runs',
+      data: DIST_BINS.map(b=>b.count),
+      backgroundColor: trail,
+      borderRadius:3,
+      barPercentage:0.9,
+      categoryPercentage:0.9
+    }]
+  },
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    plugins:{ legend:{display:false},
+      tooltip:{ callbacks:{ label:(item)=> item.raw+' run'+(item.raw===1?'':'s') } }
+    },
+    scales:{
+      x:{ grid:{display:false}, ticks:{ color:slate, font:{size:11} }, title:{display:true,text:'Distance (mi)',color:slate,font:{size:11}} },
+      y:{ grid:{ color: hair }, ticks:{ color: slate, font:{size:11}, precision:0 }, title:{display:true,text:'Number of runs',color:slate,font:{size:11}} }
+    }
+  }
+});
+document.getElementById('distStats').innerHTML = DIST_THRESHOLDS.map(t=>
+  '<div class="dist-stat"><div class="v">'+t.count+'</div><div class="l">'+t.label+'</div></div>').join('');
 
 // ---- Yearly summary cards
 function yearCard(y, isTotal){
