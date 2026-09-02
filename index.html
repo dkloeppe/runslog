@@ -45,13 +45,7 @@
     border-bottom:1px solid var(--hair);
   }
   .topo-bg svg{position:absolute;top:0;left:0;width:100%;height:100%;opacity:0.35;}
-  .nav{
-    display:flex;justify-content:space-between;align-items:center;
-    padding:26px 28px;max-width:1040px;margin:0 auto;position:relative;z-index:2;
-  }
-  .nav .mark{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.14em;color:var(--slate);display:flex;align-items:center;gap:9px;}
-  .nav .mark img{height:22px;width:22px;border-radius:5px;display:block;}
-  .nav .range{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--paper-dim);}
+  .hero-range{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--paper-dim);margin:0 0 14px;}
   .hero{position:relative;z-index:2;padding:20px 28px 56px;max-width:1040px;margin:0 auto;}
   .hero-label{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:var(--trail);margin:0 0 6px;}
   .hero-number{
@@ -76,23 +70,6 @@
   .chip .l{font-size:12px;color:var(--slate);margin-top:2px;}
   section{padding:52px 0;border-bottom:1px solid var(--hair);}
   section:last-child{border-bottom:none;}
-  .view-log-row{padding:32px 0 0;display:flex;justify-content:flex-end;gap:12px;}
-  .view-log-btn{
-    display:inline-flex;align-items:center;gap:8px;
-    background:var(--panel);border:1px solid var(--trail-dim);color:var(--trail);
-    font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.04em;
-    padding:11px 20px;border-radius:8px;text-decoration:none;
-    transition:background .15s,color .15s,border-color .15s;
-  }
-  .view-log-btn:hover{background:var(--trail);color:var(--ink);border-color:var(--trail);}
-  .download-btn{
-    display:inline-flex;align-items:center;gap:8px;
-    background:transparent;border:1px solid var(--hair-strong);color:var(--paper-dim);
-    font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.04em;
-    padding:11px 20px;border-radius:8px;text-decoration:none;
-    transition:background .15s,color .15s,border-color .15s;
-  }
-  .download-btn:hover{border-color:var(--paper-dim);color:var(--paper);}
   .mi-marker{
     display:flex;align-items:baseline;gap:12px;margin-bottom:6px;
   }
@@ -227,11 +204,93 @@
   footer{text-align:center;}
   footer .footer-logo{display:inline-block;line-height:0;margin-bottom:12px;}
   footer .footer-logo img{height:40px;width:auto;display:block;margin:0 auto;}
+  .site-nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(17,27,26,0.92);
+    -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--hair);
+  }
+  .site-nav-inner{
+    max-width:1040px;margin:0 auto;padding:16px 28px;
+    display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative;
+  }
+  .nav-mark{
+    font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.14em;color:var(--paper);
+    display:flex;align-items:center;gap:9px;text-decoration:none;flex-shrink:0;
+  }
+  .nav-mark img{height:22px;width:22px;border-radius:5px;display:block;}
+  .nav-links{display:flex;align-items:center;gap:2px;flex-wrap:wrap;}
+  .nav-link{
+    font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.03em;color:var(--paper-dim);
+    text-decoration:none;padding:8px 12px;border-radius:7px;transition:background .15s,color .15s;white-space:nowrap;
+  }
+  .nav-link:hover{color:var(--paper);background:var(--hair);}
+  .nav-link.active{color:var(--ink);background:var(--trail);}
+  .nav-link.nav-cta{border:1px solid var(--trail-dim);color:var(--trail);margin-left:8px;}
+  .nav-link.nav-cta:hover{background:var(--trail);color:var(--ink);border-color:var(--trail);}
+  .nav-toggle{
+    display:none;flex-direction:column;justify-content:center;align-items:center;gap:4px;
+    width:38px;height:38px;background:transparent;border:1px solid var(--hair-strong);border-radius:8px;
+    cursor:pointer;flex-shrink:0;padding:0;
+  }
+  .nav-toggle span{display:block;width:16px;height:1.5px;background:var(--paper-dim);transition:transform .15s,opacity .15s;}
+  .nav-toggle.open span:nth-child(1){transform:translateY(5.5px) rotate(45deg);}
+  .nav-toggle.open span:nth-child(2){opacity:0;}
+  .nav-toggle.open span:nth-child(3){transform:translateY(-5.5px) rotate(-45deg);}
+  @media(max-width:760px){
+    .nav-toggle{display:flex;}
+    .nav-links{
+      display:none;position:absolute;top:100%;left:0;right:0;
+      flex-direction:column;align-items:stretch;gap:2px;
+      background:var(--panel);border-bottom:1px solid var(--hair);
+      padding:10px 12px 16px;box-shadow:0 12px 24px rgba(0,0,0,0.3);
+    }
+    .nav-links.open{display:flex;}
+    .nav-link{padding:12px 12px;border-radius:8px;}
+    .nav-link.nav-cta{margin-left:0;margin-top:6px;}
+  }
 </style>
 </head>
 
 <body>
 
+<header class="site-nav">
+  <div class="site-nav-inner">
+    <a class="nav-mark" href="index.html"><img src="runslog-favicon-64x64.png" alt="RunsLog logo">RunsLog</a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html" class="nav-link active">Dashboard</a>
+      <a href="runs.html" class="nav-link">Runs Log</a>
+      <a href="report.html" class="nav-link">100 Weeks</a>
+      <a href="training.html" class="nav-link">Training</a>
+      <a href="goals.html" class="nav-link">Goals</a>
+      <a href="photos.html" class="nav-link">Photos</a>
+      <a href="Runs.csv" class="nav-link nav-cta" download="Runs.csv">Download Runs.csv</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false" type="button">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+<script>
+(function(){
+  var btn=document.getElementById('navToggle');
+  var links=document.getElementById('navLinks');
+  if(btn&&links){
+    btn.addEventListener('click',function(){
+      var open=links.classList.toggle('open');
+      btn.classList.toggle('open',open);
+      btn.setAttribute('aria-expanded',open?'true':'false');
+    });
+    links.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click',function(){
+        links.classList.remove('open');
+        btn.classList.remove('open');
+        btn.setAttribute('aria-expanded','false');
+      });
+    });
+  }
+})();
+</script>
 <div class="topo-bg">
   <svg viewBox="0 0 1040 340" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <path d="M-20,300 C120,260 200,320 340,270 C480,220 560,300 700,260 C840,220 900,280 1060,240" stroke="#d99a45" stroke-width="1" fill="none" opacity="0.5"/>
@@ -239,10 +298,6 @@
     <path d="M-20,200 C140,160 240,220 380,170 C520,120 600,200 740,160 C880,120 940,180 1060,145" stroke="#d99a45" stroke-width="1" fill="none" opacity="0.22"/>
     <path d="M-20,150 C140,110 260,170 400,120 C540,70 620,150 760,110 C880,78 950,130 1060,100" stroke="#d99a45" stroke-width="1" fill="none" opacity="0.12"/>
   </svg>
-  <div class="nav">
-    <div class="mark"><img src="runslog-favicon-64x64.png" alt="RunsLog logo">RunsLog</div>
-    <div class="range" id="dateRange">&mdash;</div>
-  </div>
   <div class="logo">
     <a class="logo-link" href="RunsLog-Logo.png" target="_blank" rel="noopener">
       <img src="RunsLog-Logo.png" alt="RunsLog Logo">
@@ -250,6 +305,7 @@
   </div>
   <div class="hero">
     <p class="hero-label">Total distance covered</p>
+    <p class="hero-range" id="dateRange">&mdash;</p>
     <p class="hero-number" id="heroMiles">0<span>.0</span></p>
     <p class="hero-sub" id="heroSub">Loading&hellip;</p>
     <div class="chip-row" id="chipRow"></div>
@@ -257,15 +313,6 @@
 </div>
 
 <div class="wrap">
-
-  <div class="view-log-row">
-    <a class="download-btn" href="goals.html">View Goals</a>
-    <a class="download-btn" href="pics.html">View Pics</a>
-    <a class="download-btn" href="training.html">View Training Plan</a>
-    <a class="download-btn" href="report.html">View 100 Weeks Report</a>
-    <a class="download-btn" href="Runs.csv" download="Runs.csv">&darr; Download Runs.csv</a>
-    <a class="view-log-btn" href="runs.html">View Runs Log &rarr;</a>
-  </div>
 
   <section>
     <div class="mi-marker"><span class="mi">FORECAST</span></div>

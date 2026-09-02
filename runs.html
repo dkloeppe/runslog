@@ -39,19 +39,6 @@
     -webkit-font-smoothing:antialiased;
   }
   .wrap{max-width:1200px;margin:0 auto;padding:0 28px 80px;}
-  .nav{
-    display:flex;justify-content:space-between;align-items:center;
-    padding:26px 28px;max-width:1200px;margin:0 auto;border-bottom:1px solid var(--hair);
-  }
-  .nav .mark{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.14em;color:var(--slate);display:flex;align-items:center;gap:9px;}
-  .nav .mark img{height:22px;width:22px;border-radius:5px;display:block;}
-  .back-btn{
-    display:inline-flex;align-items:center;gap:8px;
-    background:transparent;border:1px solid var(--hair-strong);color:var(--paper-dim);
-    font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.04em;
-    padding:9px 16px;border-radius:8px;text-decoration:none;transition:border-color .15s,color .15s;
-  }
-  .back-btn:hover{border-color:var(--trail);color:var(--paper);}
   .hero{padding:40px 28px 8px;max-width:1200px;margin:0 auto;}
   .hero-label{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:var(--trail);margin:0 0 6px;}
   .hero h1{
@@ -77,14 +64,18 @@
   }
   .result-count{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--slate);white-space:nowrap;}
   .table-card{
-    background:var(--panel);border:1px solid var(--hair);border-radius:12px;overflow:hidden;
+    background:var(--panel);border:1px solid var(--hair);border-radius:12px;
   }
   .table-scroll{overflow-x:auto;}
-  table.data-table{width:100%;border-collapse:collapse;font-size:13px;white-space:nowrap;}
+  table.data-table{width:100%;border-collapse:separate;border-spacing:0;font-size:13px;white-space:nowrap;}
+  table.data-table thead tr:first-child th:first-child{border-top-left-radius:12px;}
+  table.data-table thead tr:first-child th:last-child{border-top-right-radius:12px;}
+  table.data-table tbody tr:last-child td:first-child{border-bottom-left-radius:12px;}
+  table.data-table tbody tr:last-child td:last-child{border-bottom-right-radius:12px;}
   table.data-table thead th{
     text-align:left;color:var(--slate);font-weight:500;font-size:11px;
     text-transform:uppercase;letter-spacing:0.06em;padding:12px 14px;border-bottom:1px solid var(--hair-strong);
-    background:var(--panel-2);position:sticky;top:0;cursor:pointer;user-select:none;
+    background:var(--panel-2);cursor:pointer;user-select:none;
   }
   table.data-table thead th:hover{color:var(--paper);}
   table.data-table thead th.sorted::after{content:' \2193';color:var(--trail);}
@@ -103,14 +94,106 @@
   footer .footer-logo{display:inline-block;line-height:0;margin-bottom:12px;}
   footer .footer-logo img{height:40px;width:auto;display:block;margin:0 auto;}
   .empty-state{padding:60px 20px;text-align:center;color:var(--slate);font-size:14px;}
+  .site-nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(17,27,26,0.92);
+    -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--hair);
+  }
+  .site-nav-inner{
+    max-width:1200px;margin:0 auto;padding:16px 28px;
+    display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative;
+  }
+  .nav-mark{
+    font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.14em;color:var(--paper);
+    display:flex;align-items:center;gap:9px;text-decoration:none;flex-shrink:0;
+  }
+  .nav-mark img{height:22px;width:22px;border-radius:5px;display:block;}
+  .nav-links{display:flex;align-items:center;gap:2px;flex-wrap:wrap;}
+  .nav-link{
+    font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.03em;color:var(--paper-dim);
+    text-decoration:none;padding:8px 12px;border-radius:7px;transition:background .15s,color .15s;white-space:nowrap;
+  }
+  .nav-link:hover{color:var(--paper);background:var(--hair);}
+  .nav-link.active{color:var(--ink);background:var(--trail);}
+  .nav-link.nav-cta{border:1px solid var(--trail-dim);color:var(--trail);margin-left:8px;}
+  .nav-link.nav-cta:hover{background:var(--trail);color:var(--ink);border-color:var(--trail);}
+  .nav-toggle{
+    display:none;flex-direction:column;justify-content:center;align-items:center;gap:4px;
+    width:38px;height:38px;background:transparent;border:1px solid var(--hair-strong);border-radius:8px;
+    cursor:pointer;flex-shrink:0;padding:0;
+  }
+  .nav-toggle span{display:block;width:16px;height:1.5px;background:var(--paper-dim);transition:transform .15s,opacity .15s;}
+  .nav-toggle.open span:nth-child(1){transform:translateY(5.5px) rotate(45deg);}
+  .nav-toggle.open span:nth-child(2){opacity:0;}
+  .nav-toggle.open span:nth-child(3){transform:translateY(-5.5px) rotate(-45deg);}
+  @media(max-width:760px){
+    .nav-toggle{display:flex;}
+    .nav-links{
+      display:none;position:absolute;top:100%;left:0;right:0;
+      flex-direction:column;align-items:stretch;gap:2px;
+      background:var(--panel);border-bottom:1px solid var(--hair);
+      padding:10px 12px 16px;box-shadow:0 12px 24px rgba(0,0,0,0.3);
+    }
+    .nav-links.open{display:flex;}
+    .nav-link{padding:12px 12px;border-radius:8px;}
+    .nav-link.nav-cta{margin-left:0;margin-top:6px;}
+  }
+  .thead-pin{
+    position:fixed;overflow:hidden;z-index:40;display:none;
+    border-bottom:1px solid var(--hair-strong);background:var(--panel-2);
+    box-shadow:0 8px 16px rgba(0,0,0,0.25);
+  }
+  .thead-pin table{border-collapse:separate;border-spacing:0;font-size:13px;white-space:nowrap;table-layout:fixed;}
+  .thead-pin th{
+    text-align:left;color:var(--slate);font-weight:500;font-size:11px;
+    text-transform:uppercase;letter-spacing:0.06em;padding:12px 14px;
+    background:var(--panel-2);cursor:pointer;user-select:none;white-space:nowrap;
+  }
+  .thead-pin th:hover{color:var(--paper);}
+  .thead-pin th.sorted::after{content:' \2193';color:var(--trail);}
+  .thead-pin th.sorted.asc::after{content:' \2191';color:var(--trail);}
 </style>
 </head>
 <body>
 
-<div class="nav">
-  <div class="mark"><img src="runslog-favicon-64x64.png" alt="RunsLog logo">RunsLog</div>
-  <a class="back-btn" href="index.html">&larr; Back to dashboard</a>
-</div>
+<header class="site-nav">
+  <div class="site-nav-inner">
+    <a class="nav-mark" href="index.html"><img src="runslog-favicon-64x64.png" alt="RunsLog logo">RunsLog</a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html" class="nav-link">Dashboard</a>
+      <a href="runs.html" class="nav-link active">Runs Log</a>
+      <a href="report.html" class="nav-link">100 Weeks</a>
+      <a href="training.html" class="nav-link">Training</a>
+      <a href="goals.html" class="nav-link">Goals</a>
+      <a href="photos.html" class="nav-link">Photos</a>
+      <a href="Runs.csv" class="nav-link nav-cta" download="Runs.csv">Download Runs.csv</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false" type="button">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+<script>
+(function(){
+  var btn=document.getElementById('navToggle');
+  var links=document.getElementById('navLinks');
+  if(btn&&links){
+    btn.addEventListener('click',function(){
+      var open=links.classList.toggle('open');
+      btn.classList.toggle('open',open);
+      btn.setAttribute('aria-expanded',open?'true':'false');
+    });
+    links.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click',function(){
+        links.classList.remove('open');
+        btn.classList.remove('open');
+        btn.setAttribute('aria-expanded','false');
+      });
+    });
+  }
+})();
+</script>
 
 <div class="hero">
   <p class="hero-label">Raw data</p>
@@ -136,9 +219,6 @@
             <th data-key="time_str">Time</th>
             <th data-key="pace_sort">Pace</th>
             <th data-key="elev_sort">Elev gain</th>
-            <th data-key="cal_sort">Calories</th>
-            <th data-key="app">App</th>
-            <th data-key="city">City</th>
             <th data-key="run_type">Type</th>
             <th data-key="terrain">Terrain</th>
             <th data-key="note">Note</th>
@@ -232,9 +312,6 @@ function render(){
       + '<td class="mono">'+r.time_str+'</td>'
       + '<td class="mono">'+(r.pace_str||'\u2013')+'</td>'
       + '<td class="mono">'+(r.elev_gain||'\u2013')+' ft</td>'
-      + '<td class="mono">'+(r.calories||'\u2013')+'</td>'
-      + '<td>'+(r.app||'')+'</td>'
-      + '<td>'+(r.city||'')+'</td>'
       + '<td><span class="'+badgeClass(r.run_type)+'">'+(r.run_type||'')+'</span></td>'
       + '<td>'+(r.terrain||'')+'</td>'
       + '<td>'+(r.note||'')+'</td>'
@@ -266,6 +343,72 @@ document.querySelectorAll('th[data-key]').forEach(th=>{
 });
 
 render();
+
+// Pinned header: position:sticky on a <th> doesn't work reliably once an
+// ancestor (.table-scroll) needs overflow-x:auto for horizontal scrolling,
+// so we mirror the header into a fixed-position clone instead.
+(function(){
+  var scrollWrap = document.querySelector('.table-scroll');
+  var table = document.getElementById('runsTable');
+  var thead = table.querySelector('thead');
+  var navEl = document.querySelector('.site-nav');
+
+  var pinWrap = document.createElement('div');
+  pinWrap.className = 'thead-pin';
+  var pinTable = document.createElement('table');
+  pinTable.className = 'data-table';
+  var pinThead = thead.cloneNode(true);
+  pinTable.appendChild(pinThead);
+  pinWrap.appendChild(pinTable);
+  document.body.appendChild(pinWrap);
+
+  var realThs = Array.prototype.slice.call(thead.querySelectorAll('th[data-key]'));
+  var cloneThs = Array.prototype.slice.call(pinThead.querySelectorAll('th[data-key]'));
+  cloneThs.forEach(function(cth, i){
+    cth.addEventListener('click', function(){ realThs[i].click(); });
+  });
+
+  var pinned = false;
+  function update(){
+    var navH = navEl.getBoundingClientRect().height;
+    var wrapRect = scrollWrap.getBoundingClientRect();
+    var theadH = thead.getBoundingClientRect().height;
+    var shouldPin = wrapRect.top < navH && wrapRect.bottom > navH + theadH;
+
+    if(shouldPin){
+      if(!pinned){
+        pinned = true;
+        thead.style.visibility = 'hidden';
+        pinWrap.style.display = 'block';
+      }
+      realThs.forEach(function(rth, i){
+        cloneThs[i].style.width = rth.getBoundingClientRect().width + 'px';
+        cloneThs[i].className = rth.className;
+      });
+      pinTable.style.width = table.getBoundingClientRect().width + 'px';
+      pinWrap.style.top = navH + 'px';
+      pinWrap.style.left = wrapRect.left + 'px';
+      pinWrap.style.width = wrapRect.width + 'px';
+      pinTable.style.transform = 'translateX(' + (-scrollWrap.scrollLeft) + 'px)';
+    } else if(pinned){
+      pinned = false;
+      thead.style.visibility = '';
+      pinWrap.style.display = 'none';
+    }
+  }
+
+  window.addEventListener('scroll', update, {passive:true});
+  scrollWrap.addEventListener('scroll', update, {passive:true});
+  window.addEventListener('resize', update);
+
+  var origRender = render;
+  render = function(){
+    origRender();
+    update();
+  };
+
+  update();
+})();
 </script>
 </body>
 </html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RunsLog &mdash; Photos</title>
+<link rel="icon" type="image/png" sizes="16x16" href="runslog-favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="runslog-favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="runslog-favicon-48x48.png">
+<link rel="icon" type="image/png" sizes="64x64" href="runslog-favicon-64x64.png">
+<link rel="icon" type="image/png" sizes="128x128" href="runslog-favicon-128x128.png">
+<link rel="icon" type="image/png" sizes="256x256" href="runslog-favicon-256x256.png">
+<link rel="apple-touch-icon" href="runslog-favicon-256x256.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#111b1a;
+    --panel:#182524;
+    --panel-2:#1e2e2c;
+    --paper:#eef0e6;
+    --paper-dim:#c7cdc0;
+    --trail:#d99a45;
+    --trail-dim:#8a672f;
+    --moss:#7fa06d;
+    --rust:#c1613a;
+    --slate:#8fa199;
+    --hair:rgba(238,240,230,0.09);
+    --hair-strong:rgba(238,240,230,0.16);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--ink);
+    color:var(--paper);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1040px;margin:0 auto;padding:0 28px 100px;}
+  .hero{padding:52px 28px 12px;max-width:1040px;margin:0 auto;}
+  .hero-label{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:var(--trail);margin:0 0 10px;}
+  h1.page-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(38px,6vw,56px);font-weight:400;margin:0 0 10px;letter-spacing:0.01em;}
+  .hero-sub{font-size:16px;color:var(--paper-dim);margin:0 0 8px;max-width:560px;}
+
+  .gallery{
+    column-count:3;column-gap:18px;margin-top:36px;
+  }
+  @media(max-width:860px){.gallery{column-count:2;}}
+  @media(max-width:520px){.gallery{column-count:1;}}
+  .g-item{
+    break-inside:avoid;margin:0 0 18px;
+    background:var(--panel);border:1px solid var(--hair);border-radius:12px;
+    overflow:hidden;
+  }
+  .g-item a{display:block;line-height:0;}
+  .g-item img{
+    display:block;width:100%;height:auto;
+    transition:opacity .15s;
+  }
+  .g-item a:hover img{opacity:0.85;}
+  .g-item.is-mark img{
+    background:#0c1413;padding:26px;
+  }
+  .g-cap{
+    padding:11px 14px 13px;
+    font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--slate);
+    letter-spacing:0.02em;line-height:1.4;
+    border-top:1px solid var(--hair);
+  }
+  .g-cap b{color:var(--paper-dim);font-weight:500;}
+
+  footer{padding:40px 0 0;color:var(--slate);font-size:12px;font-family:'IBM Plex Mono',monospace;text-align:center;}
+  footer .footer-logo{display:inline-block;line-height:0;margin-bottom:12px;}
+  footer .footer-logo img{height:40px;width:auto;display:block;margin:0 auto;}
+  .site-nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(17,27,26,0.92);
+    -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--hair);
+  }
+  .site-nav-inner{
+    max-width:1040px;margin:0 auto;padding:16px 28px;
+    display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative;
+  }
+  .nav-mark{
+    font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.14em;color:var(--paper);
+    display:flex;align-items:center;gap:9px;text-decoration:none;flex-shrink:0;
+  }
+  .nav-mark img{height:22px;width:22px;border-radius:5px;display:block;}
+  .nav-links{display:flex;align-items:center;gap:2px;flex-wrap:wrap;}
+  .nav-link{
+    font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.03em;color:var(--paper-dim);
+    text-decoration:none;padding:8px 12px;border-radius:7px;transition:background .15s,color .15s;white-space:nowrap;
+  }
+  .nav-link:hover{color:var(--paper);background:var(--hair);}
+  .nav-link.active{color:var(--ink);background:var(--trail);}
+  .nav-link.nav-cta{border:1px solid var(--trail-dim);color:var(--trail);margin-left:8px;}
+  .nav-link.nav-cta:hover{background:var(--trail);color:var(--ink);border-color:var(--trail);}
+  .nav-toggle{
+    display:none;flex-direction:column;justify-content:center;align-items:center;gap:4px;
+    width:38px;height:38px;background:transparent;border:1px solid var(--hair-strong);border-radius:8px;
+    cursor:pointer;flex-shrink:0;padding:0;
+  }
+  .nav-toggle span{display:block;width:16px;height:1.5px;background:var(--paper-dim);transition:transform .15s,opacity .15s;}
+  .nav-toggle.open span:nth-child(1){transform:translateY(5.5px) rotate(45deg);}
+  .nav-toggle.open span:nth-child(2){opacity:0;}
+  .nav-toggle.open span:nth-child(3){transform:translateY(-5.5px) rotate(-45deg);}
+  @media(max-width:760px){
+    .nav-toggle{display:flex;}
+    .nav-links{
+      display:none;position:absolute;top:100%;left:0;right:0;
+      flex-direction:column;align-items:stretch;gap:2px;
+      background:var(--panel);border-bottom:1px solid var(--hair);
+      padding:10px 12px 16px;box-shadow:0 12px 24px rgba(0,0,0,0.3);
+    }
+    .nav-links.open{display:flex;}
+    .nav-link{padding:12px 12px;border-radius:8px;}
+    .nav-link.nav-cta{margin-left:0;margin-top:6px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="site-nav-inner">
+    <a class="nav-mark" href="index.html"><img src="runslog-favicon-64x64.png" alt="RunsLog logo">RunsLog</a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html" class="nav-link">Dashboard</a>
+      <a href="runs.html" class="nav-link">Runs Log</a>
+      <a href="report.html" class="nav-link">100 Weeks</a>
+      <a href="training.html" class="nav-link">Training</a>
+      <a href="goals.html" class="nav-link">Goals</a>
+      <a href="photos.html" class="nav-link active">Photos</a>
+      <a href="Runs.csv" class="nav-link nav-cta" download="Runs.csv">Download Runs.csv</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false" type="button">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+<script>
+(function(){
+  var btn=document.getElementById('navToggle');
+  var links=document.getElementById('navLinks');
+  if(btn&&links){
+    btn.addEventListener('click',function(){
+      var open=links.classList.toggle('open');
+      btn.classList.toggle('open',open);
+      btn.setAttribute('aria-expanded',open?'true':'false');
+    });
+    links.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click',function(){
+        links.classList.remove('open');
+        btn.classList.remove('open');
+        btn.setAttribute('aria-expanded','false');
+      });
+    });
+  }
+})();
+</script>
+
+<div class="hero">
+  <p class="hero-label">The gallery</p>
+  <h1 class="page-title">Photos</h1>
+  <p class="hero-sub">Finish lines, daily miles, and the trails in between.</p>
+</div>
+
+<div class="wrap">
+  <div class="gallery">
+    <div class="g-item">
+      <a href="DK-Boise-River-Marathon.jpg"><img src="DK-Boise-River-Marathon.jpg" alt="DK at the Boise River Marathon"></a>
+      <div class="g-cap"><b>Boise River Marathon</b><br>May 3, 2025 &middot; first marathon finish.</div>
+    </div>
+    <div class="g-item">
+      <a href="DK-Caldwell-Classic-5K.jpg"><img src="DK-Caldwell-Classic-5K.jpg" alt="DK at the Caldwell Classic 5K"></a>
+      <div class="g-cap"><b>Caldwell Classic 5K</b><br>Jun 20, 2026 &middot; bib #511, fastest pace on record.</div>
+    </div>
+    <div class="g-item">
+      <a href="DK-Caldwell-Classic-5K-Strava.jpg"><img src="DK-Caldwell-Classic-5K-Strava.jpg" alt="Strava recap of the Caldwell Classic 5K"></a>
+      <div class="g-cap"><b>Caldwell Classic 5K</b><br>Strava recap &middot; 19:16, a new 5K PR.</div>
+    </div>
+    <div class="g-item">
+      <a href="DK-Great-Futures-10K.jpeg"><img src="DK-Great-Futures-10K.jpeg" alt="DK at the Great Futures 10K"></a>
+      <div class="g-cap"><b>Great Futures 10K</b><br>Aug 29, 2026 &middot; finish line in Nampa.</div>
+    </div>
+    <div class="g-item">
+      <a href="DK-Great-Futures-10K-Strava.jpg"><img src="DK-Great-Futures-10K-Strava.jpg" alt="Strava recap of the Great Futures 10K"></a>
+      <div class="g-cap"><b>Great Futures 10K</b><br>Strava recap &middot; 40:49, a new 10K PR.</div>
+    </div>
+    <div class="g-item">
+      <a href="DK-City-Of-Trees-Marathon.jpg"><img src="DK-City-Of-Trees-Marathon.jpg" alt="DK at the City of Trees Marathon"></a>
+      <div class="g-cap"><b>City of Trees Marathon</b><br>Oct 11, 2025 &middot; a new longest run.</div>
+    </div>
+    <div class="g-item">
+      <a href="DK-Running.jpg"><img src="DK-Running.jpg" alt="DK running near Caldwell"></a>
+      <div class="g-cap"><b>Out on the daily</b><br>Caldwell, Idaho.</div>
+    </div>
+    <div class="g-item">
+      <a href="Sidewinder-Trail.jpg"><img src="Sidewinder-Trail.jpg" alt="Sidewinder Trail in the Boise foothills"></a>
+      <div class="g-cap"><b>Sidewinder Trail</b><br>Up in the Boise foothills.</div>
+    </div>
+    <div class="g-item">
+      <a href="Camels-Back-Trail.jpg"><img src="Camels-Back-Trail.jpg" alt="Camel's Back Trail at sunset"></a>
+      <div class="g-cap"><b>Camel's Back Trail</b><br>Smoky sunset over the Boise foothills.</div>
+    </div>
+    <div class="g-item">
+      <a href="Kingfisher-Trail.jpg"><img src="Kingfisher-Trail.jpg" alt="Kingfisher Trail along the reservoir"></a>
+      <div class="g-cap"><b>Kingfisher Trail</b><br>A grey afternoon along the water.</div>
+    </div>
+    <div class="g-item is-mark">
+      <a href="RunsLog-Logo.png"><img src="RunsLog-Logo.png" alt="RunsLog logo"></a>
+      <div class="g-cap"><b>RunsLog</b><br>the logo.</div>
+    </div>
+    <div class="g-item is-mark">
+      <a href="runslog-favicon-512x512.png"><img src="runslog-favicon-512x512.png" alt="RunsLog favicon"></a>
+      <div class="g-cap"><b>RunsLog</b><br>the favicon.</div>
+    </div>
+  </div>
+
+  <footer>
+    <a class="footer-logo" href="index.html"><img src="RunsLog-Logo.png" alt="RunsLog logo"></a>
+    <div class="footer-text">Photo gallery &middot; 12 photos &middot; generated from the runs log</div>
+  </footer>
+</div>
+
+</body>
+</html>
