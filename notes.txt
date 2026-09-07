@@ -1,0 +1,131 @@
+RUNSLOG — WEEKLY REBUILD NOTES
+================================
+Purpose: after you enter last week's runs into Runs.csv every Sunday,
+use this checklist (or just paste it into a chat with Claude) to
+refresh index.html (dashboard) and runs.html (runs log).
+
+--------------------------------------------------------------
+WHAT TO SAY TO CLAUDE EACH WEEK
+--------------------------------------------------------------
+Upload the updated Runs.csv, index.html, and runs.html, then ask:
+
+  "I updated Runs.csv with last week's runs (week ##). Please:
+   1. Update the dashboard (index.html) figures with last week's data
+   2. Add the new runs to the runs log table (runs.html)
+   3. Update the calendar heatmap and elevation chart on the dashboard
+   4. Update the 'This week's runs' forecast to week ## (next week's
+      planned runs from the CSV)
+   5. Flag any shoes that should be marked active/inactive based on
+      what was actually worn last week"
+
+That single message covers everything below — but if you want to
+run it in pieces, here's what each part involves.
+
+--------------------------------------------------------------
+BACKGROUND: HOW THE SITE IS BUILT
+--------------------------------------------------------------
+- Runs.csv is the source of truth. Each row is one run, with a
+  "Week (#)" column that groups rows into training weeks
+  (Monday–Sunday).
+- index.html embeds all dashboard stats as one big JSON object,
+  `const DATA = {...}` — everything (weekly volume, cumulative
+  mileage, shoe stats, pace trend, run-type/terrain breakdowns,
+  longest/fastest runs, yearly + all-time stats) is computed from
+  the CSV ahead of time and pasted in as static JSON. Two more
+  standalone arrays sit below DATA and are NOT part of it:
+    - `CAL_DAYS`  — one [date, total miles] entry per calendar day,
+      powers the "every day logged" heatmap.
+    - `ELEV_MONTHS` — one [year-month, total elevation ft] entry per
+      month, powers the elevation bar chart.
+  There's also a `WEEK<N>` array + label near the top of the file
+  that drives the "This week's runs" forecast box — it's just the
+  upcoming week's planned rows from the CSV (no actuals yet).
+- runs.html embeds the full run history as `const RUNS = [...]`,
+  newest-first. The table, search, and sort are all built from
+  this array in JS — nothing else needs to change in that file.
+
+--------------------------------------------------------------
+STEP-BY-STEP (what actually needs to change)
+--------------------------------------------------------------
+1. Identify last week's number (e.g. if this week is 103, last
+   week's actuals are week 102) and pull those rows from Runs.csv.
+
+2. runs.html — RUNS array
+   - Build one JSON object per new row (id, date_str, miles,
+     time_str, pace_str, elev_gain, max_elev, calories, app, shoe,
+     city, run_type, terrain, note).
+   - Prepend them (newest first) to the existing RUNS array.
+   - Nothing else in runs.html needs editing — run counts, footer
+     text, etc. are all computed from RUNS.length in JS.
+
+3. index.html — DATA object
+   Update in place:
+   - summary: total_miles, total_runs, total_weeks, weeks_active,
+     weighted_pace, total_hours, avg_run_distance, date_end,
+     avg_weekly_miles, streak_days (+1 per consecutive day run),
+     multi_run_days (+1 per day with 2+ runs), best_week /
+     best_week_num and longest_run ONLY if last week beat them.
+   - weekly: append {week, miles, start} for the new week.
+   - cumulative: append one {date, cum} point per new run, running
+     total carried forward from the last existing entry.
+   - shoes: add new miles/runs to each shoe used, update "last"
+     date. Recompute "active": true only for shoes worn at least
+     once in the last TWO completed weeks (last week + the week
+     before it), false for everything else (this is what
+     shows/hides the "In rotation" badge). In other words, a shoe
+     retires once it goes two full weeks without being worn.
+   - pace_trend: append one {date, pace} point per new run (pace
+     as decimal minutes, e.g. "8:08" -> 8.13).
+   - run_type_counts / run_type_miles / terrain_counts: add tallies
+     from the new runs.
+   - longest_runs / fastest_runs (top 5 lists): only touch these if
+     a new run actually cracks the top 5.
+   - yearly: update the current year's entry with the same kind of
+     rollups as summary (runs, miles, hours, avg pace, elevation,
+     calories, active_weeks, date_end, run_type_counts).
+   - yearly_total: mirror the new summary totals (this is the
+     "All-Time" card).
+   - Meta description tags near the top of the file (og:description
+     and twitter:description) also quote total runs/miles — update
+     those two lines too.
+
+4. index.html — CAL_DAYS array
+   - Append one [date, total miles] entry per day of the new week
+     (sum miles if there were two runs that day).
+
+5. index.html — ELEV_MONTHS array
+   - Add the new week's elevation gain to whichever month(s) it
+     falls in. If the week spans two calendar months, split the
+     elevation between them; add a new [year-month, ft] entry if
+     the new month doesn't exist yet.
+
+6. index.html — WEEK<N> forecast block
+   - Replace WEEK102 (or whatever the current number is) with the
+     next week's planned rows straight from the CSV, rename to
+     WEEK<N+1>, update the label/date range, and update the two
+     "WEEK 10X" text spots (mi-marker + h2#forecastTitle) to match.
+
+--------------------------------------------------------------
+SANITY CHECKS BEFORE SHARING THE FILES BACK
+--------------------------------------------------------------
+- sum(ELEV_MONTHS) should equal DATA.yearly_total.total_elevation_gain
+- sum(CAL_DAYS miles) should equal DATA.summary.total_miles
+- CAL_DAYS' last date and DATA.summary.date_end should match
+- RUNS.length should equal DATA.summary.total_runs
+- Only shoes worn in the last two completed weeks should show
+  "active": true
+
+--------------------------------------------------------------
+NOTES / GOTCHAS
+--------------------------------------------------------------
+- Weeks run Monday–Sunday and are already numbered in the CSV's
+  "Week (#)" column — no need to compute date boundaries yourself.
+- The forecast box (WEEK<N>) is always the upcoming, not-yet-run
+  week — it shows "planned" miles and, once you're partway through
+  the week, how many of those planned miles are "done so far"
+  based on today's date.
+- If a shoe gets retired, it'll naturally drop out of "active" once
+  TWO full weeks go by without it being worn — you don't need to
+  hand-edit anything for that, just stop logging runs in it. (A
+  shoe worn in either of the last two completed weeks still counts
+  as active — it only retires after missing both.)
